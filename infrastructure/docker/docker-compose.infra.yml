@@ -11,7 +11,7 @@ services:
         volumes:
             - qdrant_data:/qdrant/storage
         healthcheck:
-            test: [ "CMD", "curl", "-f", "http://localohost:6333/healthz" ]
+            test: [ "CMD", "curl", "-f", "http://localhost:6333/healthz" ]
             interval: 10s
             timeout: 5s
             retries: 5
@@ -20,7 +20,7 @@ services:
         image: redis:7.2-alpine
         container_name: rag-redis
         ports:
-            - "6379:6379"
+            - "6389:6379"
         command: redis-server --appendonly yes
         healthcheck:
             test: [ "CMD", "redis-cli", "ping" ]
@@ -49,22 +49,22 @@ services:
         image: redpandadata/redpanda:v24.1.1
         container_name: rag-redpanda
         command:
-            - redpands
+            - redpanda
             - start
             - --smp 1
             - --memory 512M
             - --overprovisioned
             - --node-id 0
             - --kafka-addr PLAINTEXT://0.0.0.0:9092
-            - --advertise-kafka-addr PLAINTEXT://localhost:9092
+            - --advertise-kafka-addr PLAINTEXT://redpanda:9092
             - --pandaproxy-addr 0.0.0.0:8082
-            - --advertise-pandaproxy-addr localhost:8082
+            - --advertise-pandaproxy-addr redpanda:8082
         ports:
             - "9092:9092" # Kafka API
             - "8082:8082" # Pandaproxy (HTTP Kafka)
             - "9644:9644" # Admin API
         volumes:
-            - redpanda_data:/var/lib/redpanda/dat
+            - redpanda_data:/var/lib/redpanda/data
         healthcheck:
             test: [ "CMD", "rpk", "cluster", "health" ]
             interval: 15s
@@ -88,7 +88,7 @@ services:
         ports:
             - "11434:11434"
         volumes:
-            - ollama_data:/rool/.ollama
+            - ollama_data:/root/.ollama
 
         # Only enable if you have GPU
 #        deploy:

@@ -826,7 +826,7 @@ metadata:
 data:
   QDRANT_HOST: "qdrant"
   QDRANT_PORT: "6333"
-  REDIS_URL: "redis://redis:6379"
+  REDIS_URL: "redis://redis:6389"
   LLM_PROVIDER: "ollama"
   OLLAMA_BASE_URL: "http://ollama:11434"
   EMBEDDING_MODEL: "nomic-embed-text"

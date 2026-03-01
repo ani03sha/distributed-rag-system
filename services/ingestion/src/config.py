@@ -10,7 +10,7 @@ class Settings(BaseSettings):
     qdrant_host: str = "localhost"
     qdrant_port: int = 6333
 
-    redis_url: str = "redis://localhost:6379"
+    redis_url: str = "redis://localhost:6389"
 
     ollama_base_url: str = "http://localhost:11434"
     llm_model: str = "qwen2.5:14b"
