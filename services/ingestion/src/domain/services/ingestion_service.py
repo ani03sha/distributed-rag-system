@@ -10,7 +10,7 @@ from ..ports.event_publisher import EventPublisher
 TOPIC_INGESTED_REQUESTED = "rag.ingest.requested"
 
 
-class IngestService:
+class IngestionService:
     def __init__(
         self, source: DocumentSource, publisher: EventPublisher, index_version: str
     ):
