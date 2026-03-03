@@ -13,6 +13,10 @@ help:
 
 infra-up:
 	docker compose -f infrastructure/docker/docker-compose.infra.yml up -d
+	@chmod +x infrastructure/scripts/init_topics.sh
+	@./infrastructure/scripts/init_topics.sh
+	@chmod +x infrastructure/scripts/init_qdrant.sh
+	@./infrastructure/scripts/init_qdrant.sh
 	@echo "Waiting for services to be healthy..."
 	@sleep 5
 	@docker compose -f infrastructure/docker/docker-compose.infra.yml ps

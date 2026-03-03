@@ -21,7 +21,7 @@ async def lifespan(app: FastAPI):
     await publisher.start()
 
     svc = IngestionService(
-        source=WikipediaAdapter,
+        source=WikipediaAdapter(),
         publisher=publisher,
         index_version=settings.index_version,
     )

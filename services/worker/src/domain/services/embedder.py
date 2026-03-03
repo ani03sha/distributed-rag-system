@@ -5,7 +5,13 @@ log = structlog.get_logger()
 
 
 class OllamaEmbedder:
-    "Call Ollama's /api/embeddings endpoint for dense vector generation"
+    """Calls Ollama's /api/embed endpoint for dense vector generation.
+
+    Uses the current Ollama API (v0.3+):
+      - Endpoint: POST /api/embed  (replaces the deprecated /api/embeddings)
+      - Field:    'input'          (replaces the deprecated 'prompt')
+      - Response: 'embeddings'     (list of vectors, one per input)
+    """
 
     def __init__(self, base_url: str, model: str) -> None:
         self._base_url = base_url
@@ -14,20 +20,22 @@ class OllamaEmbedder:
 
     async def embed_text(self, text: str) -> list[float]:
         response = await self._client.post(
-            f"{self._base_url}/api/embeddings",
-            json={"model": self._model, "prompt": text},
+            f"{self._base_url}/api/embed",
+            json={"model": self._model, "input": text},
         )
         response.raise_for_status()
-        return response.json()["embedding"]
+        return response.json()["embeddings"][0]
 
     async def embed_batch(self, texts: list[str]) -> list[list[float]]:
-        # Ollama has no batch endpoint so sequential with logging
-        embeddings = []
-        for i, text in enumerate(texts):
-            embedding = await self.embed_text(text)
-            embeddings.append(embedding)
-            if (i + 1) % 10 == 0:
-                log.info("embedder.progress", done=i + 1, total=len(texts))
+        # /api/embed supports native batching — pass the full list in one request
+        log.info("embedder.batch_start", total=len(texts), model=self._model)
+        response = await self._client.post(
+            f"{self._base_url}/api/embed",
+            json={"model": self._model, "input": texts},
+        )
+        response.raise_for_status()
+        embeddings = response.json()["embeddings"]
+        log.info("embedder.batch_done", total=len(embeddings))
         return embeddings
 
     @property

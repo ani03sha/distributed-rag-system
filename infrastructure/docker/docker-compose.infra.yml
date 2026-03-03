@@ -55,14 +55,15 @@ services:
             - --memory 512M
             - --overprovisioned
             - --node-id 0
-            - --kafka-addr PLAINTEXT://0.0.0.0:9092
-            - --advertise-kafka-addr PLAINTEXT://redpanda:9092
+            # Two listeners: INTERNAL for Docker services, EXTERNAL for host machine
+            - --kafka-addr INTERNAL://0.0.0.0:29092,EXTERNAL://0.0.0.0:9092
+            - --advertise-kafka-addr INTERNAL://redpanda:29092,EXTERNAL://localhost:9092
             - --pandaproxy-addr 0.0.0.0:8082
-            - --advertise-pandaproxy-addr redpanda:8082
+            - --advertise-pandaproxy-addr localhost:8082
         ports:
-            - "9092:9092" # Kafka API
-            - "8082:8082" # Pandaproxy (HTTP Kafka)
-            - "9644:9644" # Admin API
+            - "9092:9092"   # Kafka API — host machine connects here
+            - "8082:8082"   # Pandaproxy (HTTP Kafka)
+            - "9644:9644"   # Admin API
         volumes:
             - redpanda_data:/var/lib/redpanda/data
         healthcheck:
@@ -80,7 +81,7 @@ services:
         ports:
             - "8080:8080"
         environment:
-            KAFKA_BROKERS: "redpanda:9092"
+            KAFKA_BROKERS: "redpanda:29092"  # uses INTERNAL listener
 
     ollama:
         image: ollama/ollama:latest
@@ -88,7 +89,7 @@ services:
         ports:
             - "11434:11434"
         volumes:
-            - ollama_data:/root/.ollama
+            - ${HOME}/.ollama:/root/.ollama  # bind-mount: shares models with native Ollama install
 
         # Only enable if you have GPU
 #        deploy:
@@ -105,7 +106,6 @@ volumes:
     redis_data:
     postgres_data:
     redpanda_data:
-    ollama_data:
 
 # Why all services share one network named rag-network: When application services are added in docker-compose.dev.yml,
 # they can reach qdrant, redis, postgres by hostname. No IP addresses, no hardcoding.

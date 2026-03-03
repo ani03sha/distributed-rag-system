@@ -1,4 +1,3 @@
-import hashlib
 from datetime import datetime, UTC
 from uuid import uuid4
 

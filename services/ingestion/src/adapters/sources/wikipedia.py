@@ -53,7 +53,7 @@ class WikipediaAdapter:
     def _to_raw_document(self, page) -> RawDocument:
         content_hash = hashlib.sha256(page.text.encode()).hexdigest()
         return RawDocument(
-            external_id=f"wikipedia:{page:pageid}",
+            external_id=f"wikipedia:{page.pageid}",
             source="wikipedia",
             title=page.title,
             url=page.fullurl,

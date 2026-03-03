@@ -1,9 +1,11 @@
+import asyncio
 import json
 from datetime import datetime, UTC
 from uuid import uuid4
 
 import structlog
 from aiokafka import AIOKafkaConsumer
+from aiokafka.errors import UnknownTopicOrPartitionError
 
 from ..domain.models.chunk import DocumentChunk
 from ..domain.services.chunker import RecursiveChunker
@@ -38,7 +40,23 @@ class DocumentConsumer:
             auto_offset_reset="earliest",
             enable_auto_commit=False,  # manual commit only, after successful processing
         )
-        await consumer.start()
+
+        # Retry startup — topic may not exist yet if Redpanda just started
+        for attempt in range(1, 6):
+            try:
+                await consumer.start()
+                break
+            except UnknownTopicOrPartitionError:
+                log.warning(
+                    "consumer.topic_not_found",
+                    topic=TOPIC,
+                    attempt=attempt,
+                    hint="Run: docker exec rag-redpanda rpk topic create rag.ingest.requested --partitions 3 --replicas 1",
+                )
+                if attempt == 5:
+                    raise
+                await asyncio.sleep(attempt * 2)
+
         log.info("consumer.started", topic=TOPIC, group=GROUP_ID)
 
         try:
