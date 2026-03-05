@@ -9,12 +9,15 @@ class Settings(BaseSettings):
 
     qdrant_host: str = "localhost"
     qdrant_port: int = 6333
+    qdrant_collection: str = "documents"
 
     redis_url: str = "redis://localhost:6389"
 
     ollama_base_url: str = "http://localhost:11434"
     llm_model: str = "qwen2.5:14b"
     embedding_model: str = "nomic-embed-text"
+    retrieval_top_k: int = 5
+    reranker_enabled: bool = False
 
 
 settings = Settings()
