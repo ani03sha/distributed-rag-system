@@ -5,6 +5,8 @@ import uvicorn
 from fastapi import FastAPI
 
 from .adapters.embedder.ollama_embedder import OllamaEmbedder
+from .adapters.embedder.bm25_embedder import BM25Embedder
+from .adapters.reranker.flashrank_reranker import FlashRankReranker
 from .adapters.vector_store.qdrant_adapter import QdrantAdapter
 from .api.v1.routes import health, query
 from .config import settings
@@ -30,8 +32,9 @@ async def lifespan(app: FastAPI):
     
     retriever = RetrieverService(
         embedder=embedder,
+        sparse_embedder=BM25Embedder(),
         vector_store=vector_store,
-        reranker=None
+        reranker=FlashRankReranker() if settings.reranker_enabled else None,
     )
     
     query.set_retriever(retriever)

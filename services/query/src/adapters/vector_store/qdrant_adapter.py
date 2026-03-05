@@ -1,5 +1,6 @@
 import structlog
 from qdrant_client import AsyncQdrantClient
+from qdrant_client.models import FusionQuery, Prefetch, SparseVector
 
 from ...domain.models.query import ScoredChunk
 
@@ -22,6 +23,36 @@ class QdrantAdapter:
             with_payload=True,
         )
         return [self._to_scored_chunk(point) for point in results.points]
+
+    async def hybrid_search(
+        self,
+        dense_vector: list[float],
+        sparse_vector: dict[int, float],
+        top_k: int,
+        filters: dict,
+    ) -> list[ScoredChunk]:
+        results = await self._client.query_points(
+            collection_name=self._collection,
+            prefetch=[
+                Prefetch(
+                    query=dense_vector,
+                    using="dense",
+                    limit=top_k * 2,
+                ),
+                Prefetch(
+                    query=SparseVector(
+                        indices=list(sparse_vector.keys()),
+                        values=list(sparse_vector.values()),
+                    ),
+                    using="sparse",
+                    limit=top_k * 2,
+                ),
+            ],
+            query=FusionQuery(fusion="rrf"),  # Reciprocal rank fusion
+            limit=top_k,
+            with_payload=True,
+        )
+        return [self._to_scored_chunk(r) for r in results.points]
 
     def _to_scored_chunk(self, result) -> ScoredChunk:
         payload = result.payload
