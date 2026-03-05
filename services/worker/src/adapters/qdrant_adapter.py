@@ -1,5 +1,5 @@
 from qdrant_client import AsyncQdrantClient
-from qdrant_client.models import Distance, PointStruct, VectorParams
+from qdrant_client.models import Distance, PointStruct, VectorParams, SparseVector
 
 from ..domain.models.chunk import DocumentChunk
 
@@ -13,14 +13,20 @@ class QdrantAdapter:
         points = [
             PointStruct(
                 id=chunk.id,
-                vector={"dense": chunk.embedding},
+                vector={
+                    "dense": chunk.embedding,
+                    "sparse": SparseVector(
+                        indices=list(chunk.sparse_embedding.keys()),
+                        values=list(chunk.sparse_embedding.values()),
+                    ),
+                },
                 payload={
                     "document_id": chunk.document_id,
                     "content": chunk.content,
-                    "source_url": chunk.metadata["source_url"],
-                    "title": chunk.metadata["title"],
-                    "index_version": chunk.metadata["index_version"],
-                    "ingested_at": chunk.metadata["ingested_at"],
+                    "source_url": chunk.metadata.get("source_url", ""),
+                    "title": chunk.metadata.get("title", ""),
+                    "index_version": chunk.metadata.get("index_version", ""),
+                    "ingested_at": chunk.metadata.get("ingested_at", ""),
                 },
             )
             for chunk in chunks

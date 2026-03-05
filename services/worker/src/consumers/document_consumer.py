@@ -10,6 +10,7 @@ from aiokafka.errors import UnknownTopicOrPartitionError
 from ..domain.models.chunk import DocumentChunk
 from ..domain.services.chunker import RecursiveChunker
 from ..domain.services.embedder import OllamaEmbedder
+from ..domain.services.sparse_embedder import BM25SparseEmbedder
 from ..adapters.qdrant_adapter import QdrantAdapter
 
 log = structlog.get_logger()
@@ -29,6 +30,7 @@ class DocumentConsumer:
         self._brokers = brokers
         self._chunker = chunker
         self._embedder = embedder
+        self._sparse_embedder = BM25SparseEmbedder()
         self._vector_store = vector_store
 
     async def run(self) -> None:
@@ -79,6 +81,7 @@ class DocumentConsumer:
 
         # 2. Embed all chunks
         embeddings = await self._embedder.embed_batch(text_chunks)
+        sparse_embeddings = self._sparse_embedder.embed_batch(text_chunks)
 
         # 3. Build chunk objects
         chunks = [
@@ -87,6 +90,7 @@ class DocumentConsumer:
                 document_id=document_id,
                 content=text,
                 embedding=embedding,
+                sparse_embedding=sparse_embedding,
                 metadata={
                     "source_url": event["url"],
                     "title": title,
@@ -94,7 +98,9 @@ class DocumentConsumer:
                     "ingested_at": datetime.now(UTC).isoformat(),
                 },
             )
-            for text, embedding in zip(text_chunks, embeddings)
+            for text, embedding, sparse_embedding in zip(
+                text_chunks, embeddings, sparse_embeddings
+            )
         ]
 
         # 4. Upsert into Qdrant

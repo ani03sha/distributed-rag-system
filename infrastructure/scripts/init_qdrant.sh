@@ -9,6 +9,9 @@ curl -X PUT http://localhost:6333/collections/documents \
         "dense": {
           "size": 768,
           "distance": "Cosine"
+        },
+        "sparse_vectors": {
+          "sparse": {}
         }
       },
       "optimizers_config": {
