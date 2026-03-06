@@ -6,30 +6,38 @@ from fastapi import FastAPI
 
 from .adapters.embedder.ollama_embedder import OllamaEmbedder
 from .adapters.embedder.bm25_embedder import BM25Embedder
+from .adapters.llm.ollama_provider import OllamaProvider
 from .adapters.reranker.flashrank_reranker import FlashRankReranker
 from .adapters.vector_store.qdrant_adapter import QdrantAdapter
 from .api.v1.routes import health, query
 from .config import settings
+from .domain.services.prompt_builder import PromptBuilder
+from .domain.services.query_service import QueryService
 from .domain.services.retriever import RetrieverService
 
 log = structlog.get_logger()
-
-embedder = OllamaEmbedder(
-    base_url=settings.ollama_base_url,
-    model=settings.embedding_model,
-)
-
-vector_store = QdrantAdapter(
-    host=settings.qdrant_host,
-    port=settings.qdrant_port,
-    collection=settings.qdrant_collection,
-)
 
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     log.info("service.starting", service=settings.service_name)
+
+    embedder = OllamaEmbedder(
+        base_url=settings.ollama_base_url,
+        model=settings.embedding_model,
+    )
+
+    vector_store = QdrantAdapter(
+        host=settings.qdrant_host,
+        port=settings.qdrant_port,
+        collection=settings.qdrant_collection,
+    )
     
+    llm = OllamaProvider(
+        base_url=settings.ollama_base_url,
+        model=settings.llm_model,
+    )
+
     retriever = RetrieverService(
         embedder=embedder,
         sparse_embedder=BM25Embedder(),
@@ -37,12 +45,18 @@ async def lifespan(app: FastAPI):
         reranker=FlashRankReranker() if settings.reranker_enabled else None,
     )
     
-    query.set_retriever(retriever)
-    
+    svc = QueryService(
+        retriever=retriever,
+        llm=llm,
+        prompt_builder=PromptBuilder(),
+    )
+    query.set_query_service(svc)
+
     yield
-    
+
     await embedder.close()
     await vector_store.close()
+    await llm.close()
     log.info("service.stopping", service=settings.service_name)
 
 

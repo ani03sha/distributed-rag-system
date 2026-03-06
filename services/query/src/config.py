@@ -18,7 +18,7 @@ class Settings(BaseSettings):
     redis_url: str = "redis://localhost:6389"
 
     ollama_base_url: str = "http://localhost:11434"
-    llm_model: str = "qwen2.5:14b"
+    llm_model: str = "llama3.2:3b"
     embedding_model: str = "nomic-embed-text"
     retrieval_top_k: int = 5
     reranker_enabled: bool = False

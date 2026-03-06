@@ -29,6 +29,7 @@ async def main() -> None:
         port=settings.qdrant_port,
         collection=settings.qdrant_collection,
     )
+    await vector_store.ensure_collection(dense_size=settings.dense_vector_size)
 
     consumer = DocumentConsumer(
         brokers=settings.kafka_brokers,
