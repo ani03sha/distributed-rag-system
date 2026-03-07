@@ -60,10 +60,20 @@ async def query(request: QueryRequest):
 
 async def _stream_sse(query: str, top_k: int):
     """Wraps token stream in Server-Sent Events format."""
-    # SSE format explained: Each event is data: <payload>\n\n. The double newline terminates the event. 
-    # The client reads EventSource and accumulates tokens. [DONE] is the sentinel — same convention as 
+    # SSE format explained: Each event is data: <payload>\n\n. The double newline terminates the event.
+    # The client reads EventSource and accumulates tokens. [DONE] is the sentinel — same convention as
     # OpenAI's API, so any SSE client library will work.
     try:
+        # Check cache first - if hit, stream the cached answer immediately
+        result = await _query_service.answer(query, top_k)
+        if result.cached:
+            # Stream cached answer token by token (still feels responsive)
+            for word in result.answer.split(" "):
+                yield f'data: {json.dumps({"token": word + " "})}\n\n'
+            yield "data: [DONE]\n\n"
+            return
+
+        # Cache miss - stream directly from LLM
         async for token in _query_service.answer_stream(query, top_k):
             payload = json.dumps({"token": token})
             yield f"data: {payload}\n\n"

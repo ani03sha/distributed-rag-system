@@ -12,6 +12,8 @@ dependencies = [
     "qdrant-client>=1.9",
     "flashrank>=0.2",
     "fastembed>=0.3",
+    "redis[asyncio]>=5.0",
+    "python-jose[cryptography]>=3.3",
     "rag-shared",
 ]
 

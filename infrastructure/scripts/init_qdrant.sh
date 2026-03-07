@@ -26,3 +26,18 @@ curl -X PUT http://localhost:6333/collections/documents \
 echo ""
 echo "Collection created. Verify:"
 curl http://localhost:6333/collections/documents | python3 -m json.tool
+
+# Semantic cache collection — stores past query embeddings + answers
+if curl -sf http://localhost:6333/collections/query_cache > /dev/null 2>&1; then
+    echo "  [skip] collection 'query_cache' already exists"
+else
+    curl -sf -X PUT http://localhost:6333/collections/query_cache \
+      -H "Content-Type: application/json" \
+      -d '{
+        "vectors": {
+          "dense": { "size": 768, "distance": "Cosine" }
+        },
+        "optimizers_config": { "indexing_threshold": 100 }
+      }' > /dev/null
+    echo "  [created] collection 'query_cache'"
+fi
