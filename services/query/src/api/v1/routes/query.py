@@ -1,8 +1,9 @@
 import json
 
-from fastapi import APIRouter, HTTPException
+from fastapi import APIRouter, HTTPException, Depends
 from fastapi.responses import StreamingResponse
 from pydantic import BaseModel
+from ....api.dependencies import require_auth
 
 router = APIRouter(tags=["query"])
 
@@ -33,7 +34,7 @@ class QueryResponse(BaseModel):
 
 
 @router.post("/query")
-async def query(request: QueryRequest):
+async def query(request: QueryRequest, _: dict = Depends(require_auth)):
     if _query_service is None:
         raise HTTPException(status_code=503, detail="Query service not initialized")
 
@@ -72,6 +73,10 @@ async def _stream_sse(query: str, top_k: int):
                 yield f'data: {json.dumps({"token": word + " "})}\n\n'
             yield "data: [DONE]\n\n"
             return
+
+        # Note: The streaming path (answer_stream) bypasses the cache — you can't cache a stream mid-flight.
+        # The answer() method (non-streaming) is what gets cached. In practice, make the streaming route check
+        # the cache first and stream from the cached string if available, or from LLM if not.
 
         # Cache miss - stream directly from LLM
         async for token in _query_service.answer_stream(query, top_k):

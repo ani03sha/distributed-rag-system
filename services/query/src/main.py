@@ -9,11 +9,14 @@ from .adapters.embedder.bm25_embedder import BM25Embedder
 from .adapters.llm.ollama_provider import OllamaProvider
 from .adapters.reranker.flashrank_reranker import FlashRankReranker
 from .adapters.vector_store.qdrant_adapter import QdrantAdapter
-from .api.v1.routes import health, query
+from .adapters.cache.exact_cache import ExactCache
+from .adapters.cache.semantic_cache import SemanticCache
+from .api.v1.routes import health, query, auth
 from .config import settings
 from .domain.services.prompt_builder import PromptBuilder
 from .domain.services.query_service import QueryService
 from .domain.services.retriever import RetrieverService
+from .domain.services.cached_query_service import CachedQueryService
 
 log = structlog.get_logger()
 
@@ -45,15 +48,32 @@ async def lifespan(app: FastAPI):
         reranker=FlashRankReranker() if settings.reranker_enabled else None,
     )
     
-    svc = QueryService(
+    exact_cache = ExactCache(redis_url=settings.redis_url)
+    semantic_cache = SemanticCache(
+        qdrant_host=settings.qdrant_host,
+        qdrant_port=settings.qdrant_port,
+    )
+    await semantic_cache.ensure_collection(dense_size=embedder.dimensions)
+    
+    raw_svc = QueryService(
         retriever=retriever,
         llm=llm,
         prompt_builder=PromptBuilder(),
     )
-    query.set_query_service(svc)
+    
+    cached_svc = CachedQueryService(
+        query_service=raw_svc,
+        exact_cache=exact_cache,
+        semantic_cache=semantic_cache,
+        embedder=embedder
+    )
+    
+    query.set_query_service(cached_svc)
 
     yield
 
+    await exact_cache.close()
+    await semantic_cache.close()
     await embedder.close()
     await vector_store.close()
     await llm.close()
@@ -63,6 +83,7 @@ async def lifespan(app: FastAPI):
 app = FastAPI(title="RAG Query Service", version="0.1.0", lifespan=lifespan)
 
 app.include_router(health.router, prefix="/v1")
+app.include_router(auth.router, prefix="/v1")
 app.include_router(query.router, prefix="/v1")
 
 if __name__ == "__main__":

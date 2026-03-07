@@ -34,12 +34,12 @@ class CachedQueryService:
 
     async def answer(self, query: str, top_k: int = 5) -> GeneratedAnswer:
         # Layer 1: Exact cache
-        cached = self._exact.get(query)
+        cached = await self._exact.get(query)
         if cached:
             return self._deserialize(cached, cached=True)
 
         # Layer 2: Semantic cache (embed once, reuse for both cache + retrieval)
-        query_vector = self._embedder.embed_text(query)
+        query_vector = await self._embedder.embed_text(query)
         cached = await self._semantic.get(query_vector)
         if cached:
             return self._deserialize(cached, cached=True)
@@ -59,7 +59,7 @@ class CachedQueryService:
         return {
             "answer": answer.answer,
             "sources": [
-                {"title": s.title, "url": s.url, "score": s.score}
+                {"title": s.title, "url": s.url, "score": float(s.score)}
                 for s in answer.sources
             ],
         }

@@ -3,7 +3,7 @@ from uuid import uuid4
 
 import structlog
 from qdrant_client import AsyncQdrantClient
-from qdrant_client.models import PointStruct
+from qdrant_client.models import Distance, PointStruct, VectorParams
 
 log = structlog.get_logger()
 
@@ -26,17 +26,25 @@ class SemanticCache:
     def __init__(self, qdrant_host: str, qdrant_port: int) -> None:
         self._client = AsyncQdrantClient(host=qdrant_host, port=qdrant_port)
 
+    async def ensure_collection(self, dense_size: int = 768) -> None:
+        if not await self._client.collection_exists(COLLECTION):
+            await self._client.create_collection(
+                collection_name=COLLECTION,
+                vectors_config={"dense": VectorParams(size=dense_size, distance=Distance.COSINE)},
+            )
+
     async def get(self, query_vector: list[float]) -> dict | None:
-        results = await self._client.search(
+        results = await self._client.query_points(
             collection_name=COLLECTION,
-            query_vector=("dense", query_vector),
+            query=query_vector,
+            using="dense",
             limit=1,
             with_payload=True,
         )
-        if not results:
+        if not results.points:
             return None
 
-        top = results[0]
+        top = results.points[0]
         if top.score < SIMILARITY_THRESHOLD:
             log.info(
                 "cache.semantic_miss",
@@ -53,9 +61,9 @@ class SemanticCache:
             collection_name=COLLECTION,
             points=[
                 PointStruct(
-                    id=str(uuid4),
+                    id=str(uuid4()),
                     vector={"dense": query_vector},
-                    payload={"answer_json": answer},
+                    payload={"answer_json": json.dumps(answer)},
                 )
             ],
         )

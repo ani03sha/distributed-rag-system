@@ -22,6 +22,11 @@ class Settings(BaseSettings):
     embedding_model: str = "nomic-embed-text"
     retrieval_top_k: int = 5
     reranker_enabled: bool = False
+    
+    api_keys: str = "dev-key-1,dev-key-2" # Comma separated, replace with DB in prod
+    jwt_secret_key: str = "change-me-inp-production"
+    jwt_algorithm: str = "HS256"
+    jwt_expiry_minutes: int = 15
 
 
 settings = Settings()
