@@ -1,0 +1,16 @@
+question,round,elapsed_s,cached
+What is the CAP theorem?,1,0.627,True
+What is the CAP theorem?,2,0.052,True
+What is the CAP theorem?,3,0.061,True
+What is eventual consistency?,1,16.444,False
+What is eventual consistency?,2,0.003,True
+What is eventual consistency?,3,0.002,True
+What is consistent hashing?,1,0.065,True
+What is consistent hashing?,2,0.044,True
+What is consistent hashing?,3,0.059,True
+What is the Raft consensus algorithm?,1,0.056,True
+What is the Raft consensus algorithm?,2,0.06,True
+What is the Raft consensus algorithm?,3,0.057,True
+What is the gossip protocol?,1,9.067,False
+What is the gossip protocol?,2,0.002,True
+What is the gossip protocol?,3,0.002,True
