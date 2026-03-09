@@ -17,6 +17,7 @@ from .domain.services.prompt_builder import PromptBuilder
 from .domain.services.query_service import QueryService
 from .domain.services.retriever import RetrieverService
 from .domain.services.cached_query_service import CachedQueryService
+from .api.middleware import LoggingMiddleware
 
 log = structlog.get_logger()
 
@@ -69,6 +70,15 @@ async def lifespan(app: FastAPI):
     )
     
     query.set_query_service(cached_svc)
+    
+    structlog.configure(
+        processors=[
+            structlog.contextvars.merge_contextvars,
+            structlog.processors.TimeStamper(fmt="iso"),
+            structlog.processors.add_log_level,
+            structlog.dev.ConsoleRenderer(),
+        ]
+    )
 
     yield
 
@@ -81,6 +91,7 @@ async def lifespan(app: FastAPI):
 
 
 app = FastAPI(title="RAG Query Service", version="0.1.0", lifespan=lifespan)
+app.add_middleware(LoggingMiddleware)
 
 app.include_router(health.router, prefix="/v1")
 app.include_router(auth.router, prefix="/v1")
