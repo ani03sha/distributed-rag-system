@@ -132,6 +132,29 @@ services:
         environment:
             COLLECTOR_OTLP_ENABLED: "true"
 
+    traefik:
+        image: traefik:v3.0
+        container_name: rag-traefik
+        ports:
+            - "80:80" # API Gateway Endpoint
+            - "8088:8080" # Traefik dashboard
+        volumes:
+            - ./traefik.yml:/etc/traefik/traefik.yml
+            - ./traefik-dynamic.yml:/etc/traefik/dynamic.yml
+        healthcheck:
+            test:
+                [
+                    "CMD",
+                    "wget",
+                    "--quiet",
+                    "--tries=1",
+                    "--spider",
+                    "http://localhost/ping",
+                ]
+            interval: 15s
+            timeout: 5s
+            retries: 5
+
 volumes:
     qdrant_data:
     redis_data:

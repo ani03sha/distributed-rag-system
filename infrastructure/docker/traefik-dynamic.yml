@@ -1,0 +1,29 @@
+http:
+    routers:
+        query-router:
+            rule: "PathPrefix(`/v1/query`) || PathPrefix(`/v1/auth`) || PathPrefix(`/v1/health`)"
+            service: query-service
+            middlewares:
+                - rate-limit
+
+        ingestion-routers:
+            rule: "PathPrefix(`/v1/ingest`)"
+            service: ingestion-service
+
+    services:
+        query-service:
+            loadBalancer:
+                servers:
+                    - url: "http://host.docker.internal:8001"
+        
+        ingestion-service:
+            loadBalancer:
+                servers:
+                    - url: "http://host.docker.internal:8002"
+
+    
+    middlewares:
+        rate-limit:
+            rateLimit:
+                average: 100
+                burst: 50
