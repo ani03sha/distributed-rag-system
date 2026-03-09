@@ -28,6 +28,9 @@ class Settings(BaseSettings):
     jwt_algorithm: str = "HS256"
     jwt_expiry_minutes: int = 15
     jwt_refresh_expiry_days: int = 7
+    
+    otlp_endpoint: str = "http://localhost:4317"
+    tracing_enabled: bool = True
 
 
 settings = Settings()

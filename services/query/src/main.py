@@ -19,6 +19,7 @@ from .domain.services.query_service import QueryService
 from .domain.services.retriever import RetrieverService
 from .domain.services.cached_query_service import CachedQueryService
 from .api.middleware import LoggingMiddleware
+from .tracing import setup_tracing
 
 log = structlog.get_logger()
 
@@ -94,6 +95,8 @@ async def lifespan(app: FastAPI):
 app = FastAPI(title="RAG Query Service", version="0.1.0", lifespan=lifespan)
 app.add_middleware(LoggingMiddleware)
 Instrumentator().instrument(app).expose(app, endpoint="/metrics")
+if settings.tracing_enabled:
+    setup_tracing(app, settings.service_name, settings.otlp_endpoint)
 
 app.include_router(health.router, prefix="/v1")
 app.include_router(auth.router, prefix="/v1")
