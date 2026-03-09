@@ -3,6 +3,7 @@ from contextlib import asynccontextmanager
 import structlog
 import uvicorn
 from fastapi import FastAPI
+from prometheus_fastapi_instrumentator import Instrumentator
 
 from .adapters.embedder.ollama_embedder import OllamaEmbedder
 from .adapters.embedder.bm25_embedder import BM25Embedder
@@ -92,6 +93,7 @@ async def lifespan(app: FastAPI):
 
 app = FastAPI(title="RAG Query Service", version="0.1.0", lifespan=lifespan)
 app.add_middleware(LoggingMiddleware)
+Instrumentator().instrument(app).expose(app, endpoint="/metrics")
 
 app.include_router(health.router, prefix="/v1")
 app.include_router(auth.router, prefix="/v1")
