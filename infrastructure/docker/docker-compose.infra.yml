@@ -1,7 +1,6 @@
 name: distributed-rag-infra
 
 services:
-
     qdrant:
         image: qdrant/qdrant:v1.13.6
         container_name: rag-qdrant
@@ -11,7 +10,7 @@ services:
         volumes:
             - qdrant_data:/qdrant/storage
         healthcheck:
-            test: [ "CMD", "curl", "-f", "http://localhost:6333/healthz" ]
+            test: ["CMD", "curl", "-f", "http://localhost:6333/healthz"]
             interval: 10s
             timeout: 5s
             retries: 5
@@ -23,7 +22,7 @@ services:
             - "6389:6379"
         command: redis-server --appendonly yes
         healthcheck:
-            test: [ "CMD", "redis-cli", "ping" ]
+            test: ["CMD", "redis-cli", "ping"]
             interval: 10s
             timeout: 5s
             retries: 5
@@ -40,7 +39,7 @@ services:
         volumes:
             - postgres_data:/var/lib/postgresql/data
         healthcheck:
-            test: [ "CMD-SHELL", "pg_isready -U rag -d rag" ]
+            test: ["CMD-SHELL", "pg_isready -U rag -d rag"]
             interval: 10s
             timeout: 5s
             retries: 5
@@ -61,13 +60,13 @@ services:
             - --pandaproxy-addr 0.0.0.0:8082
             - --advertise-pandaproxy-addr localhost:8082
         ports:
-            - "9092:9092"   # Kafka API — host machine connects here
-            - "8082:8082"   # Pandaproxy (HTTP Kafka)
-            - "9644:9644"   # Admin API
+            - "9092:9092" # Kafka API — host machine connects here
+            - "8082:8082" # Pandaproxy (HTTP Kafka)
+            - "9644:9644" # Admin API
         volumes:
             - redpanda_data:/var/lib/redpanda/data
         healthcheck:
-            test: [ "CMD", "rpk", "cluster", "health" ]
+            test: ["CMD", "rpk", "cluster", "health"]
             interval: 15s
             timeout: 10s
             retries: 5
@@ -81,7 +80,7 @@ services:
         ports:
             - "8080:8080"
         environment:
-            KAFKA_BROKERS: "redpanda:29092"  # uses INTERNAL listener
+            KAFKA_BROKERS: "redpanda:29092" # uses INTERNAL listener
 
     ollama:
         image: ollama/ollama:latest
@@ -89,23 +88,56 @@ services:
         ports:
             - "11434:11434"
         volumes:
-            - ${HOME}/.ollama:/root/.ollama  # bind-mount: shares models with native Ollama install
+            - ${HOME}/.ollama:/root/.ollama # bind-mount: shares models with native Ollama install
 
         # Only enable if you have GPU
-#        deploy:
-#            resources:
-#                reservations:
-#                    devices:
-#                        -   driver: nvidia
-#                            count: all
-#                            capabilities:
-#                                - gpu
+    #        deploy:
+    #            resources:
+    #                reservations:
+    #                    devices:
+    #                        -   driver: nvidia
+    #                            count: all
+    #                            capabilities:
+    #                                - gpu
+
+    prometheus:
+        image: prom/prometheus:v2.52.0
+        container_name: rag-prometheus
+        ports:
+            - "9090:9090"
+        volumes:
+            - ./prometheus.yml:/etc/prometheus/prometheus.yml
+        command:
+            - --config.file=/etc/prometheus/prometheus.yml
+        healthcheck:
+            test:
+                [
+                    "CMD",
+                    "wget",
+                    "--quiet",
+                    "--tries=1",
+                    "--spider",
+                    "http://localhost:9090/-/healthy",
+                ]
+            interval: 15s
+            timeout: 5s
+            retries: 5
+
+    jaeger:
+        image: jaegertracing/all-in-one:1.57
+        container_name: rag-jaeger
+        ports:
+            - "16686:16686"
+            - "4317:4317"
+        environment:
+            COLLECTOR_OTLP_ENABLED: "true"
 
 volumes:
     qdrant_data:
     redis_data:
     postgres_data:
     redpanda_data:
+    prometheus_data:
 
 # Why all services share one network named rag-network: When application services are added in docker-compose.dev.yml,
 # they can reach qdrant, redis, postgres by hostname. No IP addresses, no hardcoding.
