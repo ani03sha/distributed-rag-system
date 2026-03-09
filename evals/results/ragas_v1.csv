@@ -1,0 +1,45 @@
+question,answer,ground_truth,faithfulness,answer_relevancy,context_precision,context_recall
+What is the CAP theorem?,"The CAP theorem states that any distributed data store can provide at most two of the following three guarantees:
+
+1. Consistency (C)
+2. Availability (A)
+3. Partition tolerance (P)","The CAP theorem states that any distributed data store can provide at most two of the following three guarantees:
+
+1. Consistency (C)
+2. Availability (A)
+3. Partition tolerance (P)",1.0,0.7378,1.0,1.0
+What is the Paxos algorithm used for?,"The Paxos algorithm is used to implement a general-purpose fault-tolerant virtual machine in various systems. It is also used for leader election, consensus, and distributed transaction resolution in several applications, including:
+
+* Storage virtualization services
+* Distributed lock services (e.g., Google's Chubby)
+* NoSQL databases (e.g., Apache Cassandra, ScyllaDB)
+* Cloud computing platforms (e.g., Amazon Elastic Container Services)
+* Distributed file systems (e.g., XtreemFS)
+
+[1], [2], [3], [4], [5]","The Paxos algorithm is used to implement a general-purpose fault-tolerant virtual machine in various systems. It is also used for leader election, consensus, and distributed transaction resolution in several applications, including:
+
+* Storage virtualization services
+* Distributed lock services (e.g., Google's Chubby)
+* NoSQL databases (e.g., Apache Cassandra, ScyllaDB)
+* Cloud computing platforms (e.g., Amazon Elastic Container Services)
+* Distributed file systems (e.g., XtreemFS)
+
+[1], [2], [3], [4], [5]",0.8889,0.8409,0.3069,0.875
+What is the Raft consensus algorithm?,"The Raft consensus algorithm is a distributed consensus algorithm designed as an alternative to the Paxos family of algorithms. It was meant to be more understandable than Paxos by means of separation of logic, but it is also formally proven safe and offers some additional features. [1]","The Raft consensus algorithm is a distributed consensus algorithm designed as an alternative to the Paxos family of algorithms. It was meant to be more understandable than Paxos by means of separation of logic, but it is also formally proven safe and offers some additional features. [1]",0.8333,0.9586,1.0,1.0
+What is consistent hashing?,"Consistent hashing evenly distributes cache keys across shards, even if some of the shards crash or become unavailable.","Consistent hashing evenly distributes cache keys across shards, even if some of the shards crash or become unavailable.",1.0,0.8019,1.0,1.0
+What is the difference between synchronous and asynchronous replication?,"According to [1], [2], [4], [5], [7], [9], [13], [16], [17], [18], [19], and [20], the main differences between synchronous and asynchronous replication are:
+
+* Synchronous replication uses a separate clock signal (or pulse) to synchronize data transmission, whereas asynchronous replication relies on special signals or transitions in a single signal to synchronize data transmission.
+* In synchronous replication, the receiver detects the ""first"" edge transition of the signal to determine when another bit is ready. In contrast, in asynchronous replication, the receiver uses transitions on a single signal to figure out the transmitter's bit rate and timing, and sets a local clock using a phase-locked loop (PLL) to synchronize with the transmission rate.
+* Synchronous replication typically requires a constant ""bit"" timing, whereas asynchronous replication can tolerate some variation in timing.
+
+In general, synchronous replication is more suitable for applications that require strict timing and synchronization, such as real-time systems or high-performance computing. Asynchronous replication, on the other hand, is often used in distributed systems where latency and variability are acceptable, such as in cloud computing or big data processing.","According to [1], [2], [4], [5], [7], [9], [13], [16], [17], [18], [19], and [20], the main differences between synchronous and asynchronous replication are:
+
+* Synchronous replication uses a separate clock signal (or pulse) to synchronize data transmission, whereas asynchronous replication relies on special signals or transitions in a single signal to synchronize data transmission.
+* In synchronous replication, the receiver detects the ""first"" edge transition of the signal to determine when another bit is ready. In contrast, in asynchronous replication, the receiver uses transitions on a single signal to figure out the transmitter's bit rate and timing, and sets a local clock using a phase-locked loop (PLL) to synchronize with the transmission rate.
+* Synchronous replication typically requires a constant ""bit"" timing, whereas asynchronous replication can tolerate some variation in timing.
+
+In general, synchronous replication is more suitable for applications that require strict timing and synchronization, such as real-time systems or high-performance computing. Asynchronous replication, on the other hand, is often used in distributed systems where latency and variability are acceptable, such as in cloud computing or big data processing.",0.6,0.9848,0.0,0.75
+What is a distributed ledger?,A distributed ledger is a digital record-keeping system that can record transactions between two parties efficiently and in a verifiable and permanent way.,A distributed ledger is a digital record-keeping system that can record transactions between two parties efficiently and in a verifiable and permanent way.,1.0,1.0,0.9109,1.0
+What is partition tolerance?,"According to [1], Partition tolerance refers to a system's ability to continue operating despite an arbitrary number of messages being dropped (or delayed) by the network between nodes.","According to [1], Partition tolerance refers to a system's ability to continue operating despite an arbitrary number of messages being dropped (or delayed) by the network between nodes.",1.0,0.9186,0.697,1.0
+What is leader election in distributed systems?,"[1] According to the context document ""Distributed algorithmic mechanism design"", leader election is a fundamental problem in distributed computing where system agents are assumed to be rational and prefer having a leader to not having one. The goal of leader election is to designate a single process as the organizer of some task distributed among several computers (nodes) in a network.","[1] According to the context document ""Distributed algorithmic mechanism design"", leader election is a fundamental problem in distributed computing where system agents are assumed to be rational and prefer having a leader to not having one. The goal of leader election is to designate a single process as the organizer of some task distributed among several computers (nodes) in a network.",1.0,0.8913,0.7909,0.5

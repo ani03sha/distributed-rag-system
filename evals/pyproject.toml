@@ -1,0 +1,23 @@
+[project]
+name = "rag-evals"
+version = "0.1.0"
+requires-python = ">=3.12"
+dependencies = [
+    "ragas>=0.2",
+    "langchain-ollama>=0.2",      # RAGAS judge LLM via Ollama
+    "langchain-community>=0.2",
+    "datasets>=2.19",             # required by RAGAS internally
+    "httpx>=0.27",                # call the query API
+    "pandas>=2.0",                # results analysis
+    "rich>=13.0",                 # pretty tables in terminal
+    "matplotlib>=3.9",            # comparison charts
+    "pydantic>=2.7",
+    "python-dotenv>=1.0",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["runners", "datasets"]

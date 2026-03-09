@@ -9,7 +9,7 @@ log = structlog.get_logger()
 
 class QdrantAdapter:
     def __init__(self, host: str, port: int, collection: str) -> None:
-        self._client = AsyncQdrantClient(host=host, port=port)
+        self._client = AsyncQdrantClient(host=host, port=port, check_compatibility=False)
         self._collection = collection
 
     async def search(

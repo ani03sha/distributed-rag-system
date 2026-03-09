@@ -48,10 +48,11 @@ class CachedQueryService:
         log.info("cache.miss", query=query[:60])
         result = await self._svc.answer(query, top_k)
 
-        # Store in both cache layers
-        serialized = self._serialize(result)
-        await self._exact.set(query, serialized)
-        await self._semantic.set(query_vector, serialized)
+        # Only cache successful responses — don't poison the cache with fallback answers
+        if result.sources:
+            serialized = self._serialize(result)
+            await self._exact.set(query, serialized)
+            await self._semantic.set(query_vector, serialized)
 
         return result
 
@@ -59,7 +60,7 @@ class CachedQueryService:
         return {
             "answer": answer.answer,
             "sources": [
-                {"title": s.title, "url": s.url, "score": float(s.score)}
+                {"title": s.title, "source_url": s.source_url, "score": float(s.score), "chunk_text": s.chunk_text}
                 for s in answer.sources
             ],
         }
@@ -68,7 +69,7 @@ class CachedQueryService:
         return GeneratedAnswer(
             answer=data["answer"],
             sources=[
-                SourceCitation(title=s["title"], url=s["url"], score=s["score"])
+                SourceCitation(title=s["title"], source_url=s["source_url"], score=s["score"], chunk_text=s.get("chunk_text", ""))
                 for s in data.get("sources", [])
             ],
             cached=cached,

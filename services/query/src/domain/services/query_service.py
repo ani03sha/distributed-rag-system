@@ -71,7 +71,7 @@ class QueryService:
             tokens.append(token)
             
         sources = [
-            SourceCitation(title=c.title, url=c.source_url, score=c.score)
+            SourceCitation(title=c.title, source_url=c.source_url, score=c.score, chunk_text=c.content)
             for c in result.chunks
         ]
         

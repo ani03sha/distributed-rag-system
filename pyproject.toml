@@ -13,6 +13,7 @@ members = [
     "services/worker",
     "services/admin",
     "shared",
+    "evals",
 ]
 
 [tool.uv.sources]

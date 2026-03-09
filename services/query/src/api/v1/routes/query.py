@@ -21,15 +21,16 @@ class QueryRequest(BaseModel):
     stream: bool = True
 
 
-class SourceResponse(BaseModel):
+class ChunkContext(BaseModel):
     title: str
-    url: str
+    source_url: str
     score: float
+    chunk_text: str = ""
 
 
 class QueryResponse(BaseModel):
     answer: str
-    sources: list[SourceResponse]
+    sources: list[ChunkContext]
     cached: bool = False
 
 
@@ -53,9 +54,10 @@ async def query(request: QueryRequest, _: dict = Depends(require_auth)):
     return QueryResponse(
         answer=result.answer,
         sources=[
-            SourceResponse(title=s.title, url=s.url, score=s.score)
+            ChunkContext(title=s.title, source_url=s.source_url, score=s.score, chunk_text=s.chunk_text)
             for s in result.sources
         ],
+        cached=result.cached,
     )
 
 

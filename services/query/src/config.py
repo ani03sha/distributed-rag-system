@@ -27,6 +27,7 @@ class Settings(BaseSettings):
     jwt_secret_key: str = "change-me-inp-production"
     jwt_algorithm: str = "HS256"
     jwt_expiry_minutes: int = 15
+    jwt_refresh_expiry_days: int = 7
 
 
 settings = Settings()

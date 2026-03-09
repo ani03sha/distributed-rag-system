@@ -6,8 +6,9 @@ from .query import ScoredChunk
 @dataclass(frozen=True)
 class SourceCitation:
     title: str
-    url: str
+    source_url: str
     score: float
+    chunk_text: str = ""
 
 
 @dataclass(frozen=True)

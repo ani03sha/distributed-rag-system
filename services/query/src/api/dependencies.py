@@ -21,10 +21,18 @@ async def require_auth(
             settings.jwt_secret_key,
             algorithms=[settings.jwt_algorithm],
         )
-        return payload
     except JWTError:
         raise HTTPException(
             status_code=401,
             detail="Invalid or expired token",
-            headers={"WWW-Authenticate", "Bearer"},
+            headers={"WWW-Authenticate": "Bearer"},
         )
+
+    if payload.get("type") != "access":
+        raise HTTPException(
+            status_code=401,
+            detail="Refresh tokens cannot be used for API access",
+            headers={"WWW-Authenticate": "Bearer"},
+        )
+
+    return payload

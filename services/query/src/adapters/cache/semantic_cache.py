@@ -3,6 +3,7 @@ from uuid import uuid4
 
 import structlog
 from qdrant_client import AsyncQdrantClient
+from qdrant_client.http.exceptions import UnexpectedResponse
 from qdrant_client.models import Distance, PointStruct, VectorParams
 
 log = structlog.get_logger()
@@ -24,7 +25,7 @@ class SemanticCache:
     """
 
     def __init__(self, qdrant_host: str, qdrant_port: int) -> None:
-        self._client = AsyncQdrantClient(host=qdrant_host, port=qdrant_port)
+        self._client = AsyncQdrantClient(host=qdrant_host, port=qdrant_port, check_compatibility=False)
 
     async def ensure_collection(self, dense_size: int = 768) -> None:
         if not await self._client.collection_exists(COLLECTION):
@@ -34,13 +35,18 @@ class SemanticCache:
             )
 
     async def get(self, query_vector: list[float]) -> dict | None:
-        results = await self._client.query_points(
-            collection_name=COLLECTION,
-            query=query_vector,
-            using="dense",
-            limit=1,
-            with_payload=True,
-        )
+        try:
+            results = await self._client.query_points(
+                collection_name=COLLECTION,
+                query=query_vector,
+                using="dense",
+                limit=1,
+                with_payload=True,
+            )
+        except UnexpectedResponse as e:
+            if e.status_code == 404:
+                return None  # collection deleted — treat as cache miss, recreated on next set()
+            raise
         if not results.points:
             return None
 
@@ -57,6 +63,7 @@ class SemanticCache:
         return json.loads(top.payload["answer_json"])
 
     async def set(self, query_vector: list[float], answer: dict) -> None:
+        await self.ensure_collection()
         await self._client.upsert(
             collection_name=COLLECTION,
             points=[
