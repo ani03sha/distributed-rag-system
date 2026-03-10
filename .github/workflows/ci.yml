@@ -37,5 +37,8 @@ jobs:
       - name: Install all workspace dependencies
         run: uv sync --all-packages
 
-      - name: Run tests
-        run: uv run pytest services/query/tests services/worker/tests -v --tb=short
+      - name: Run query service tests
+        run: PYTHONPATH=services/query uv run pytest services/query/tests -v --tb=short
+
+      - name: Run worker service tests
+        run: PYTHONPATH=services/worker uv run pytest services/worker/tests -v --tb=short
