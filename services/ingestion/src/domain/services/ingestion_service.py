@@ -2,7 +2,6 @@ from datetime import datetime, UTC
 from uuid import uuid4
 
 from rag_shared.models.events import DocumentIngestRequested
-from ..models.document import RawDocument
 from ..ports.document_source import DocumentSource
 from ..ports.event_publisher import EventPublisher
 

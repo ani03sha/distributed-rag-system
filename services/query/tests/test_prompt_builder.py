@@ -1,4 +1,3 @@
-import pytest
 from src.domain.services.prompt_builder import PromptBuilder
 from src.domain.models.query import ScoredChunk
 

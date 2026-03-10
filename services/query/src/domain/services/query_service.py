@@ -2,11 +2,11 @@ from typing import AsyncIterator
 
 import structlog
 
-from ..models.generation import GeneratedAnswer, GenerationRequest, SourceCitation
-from ..models.query import SearchQuery, ScoredChunk
-from ..ports.llm_provider import LLMProvider
 from .prompt_builder import PromptBuilder
 from .retriever import RetrieverService
+from ..models.generation import GeneratedAnswer, SourceCitation
+from ..models.query import SearchQuery
+from ..ports.llm_provider import LLMProvider
 
 log = structlog.get_logger()
 

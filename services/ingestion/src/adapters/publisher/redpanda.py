@@ -2,8 +2,6 @@ import json
 
 from aiokafka import AIOKafkaProducer
 
-from ...domain.ports.event_publisher import EventPublisher
-
 
 class RedpandaPublisher:
     def __init__(self, brokers: str):
