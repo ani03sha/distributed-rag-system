@@ -27,3 +27,6 @@ dev = [
     "ruff>=0.4", # Linter + formatter
     "mypy>=1.10",
 ]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
