@@ -1,6 +1,6 @@
 import structlog
 
-from ..models.query import RetrievalResult, SearchQuery, ScoredChunk
+from ..models.query import RetrievalResult, SearchQuery
 from ..ports.embedding_provider import EmbeddingProvider
 from ..ports.reranker import Reranker
 from ..ports.sparse_embedding_provider import SparseEmbeddingProvider

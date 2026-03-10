@@ -1,4 +1,3 @@
-import pytest
 from src.domain.services.chunker import RecursiveChunker
 
 
