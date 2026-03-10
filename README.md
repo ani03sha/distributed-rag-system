@@ -17,7 +17,7 @@ This system ingests documents from Wikipedia (pluggable, i.e., you can replace i
 - **Horizontally scalable** — every service is stateless and scales independently
 - **Event-driven ingestion** — documents flow through Redpanda asynchronously; ingestion never blocks query serving
 
-### What it is NOT
+## What it is NOT
 
 - Not a chatbot with memory (no session state)
 - Not an ML training platform
@@ -187,28 +187,9 @@ uv run python runners/compare_reports.py results/ragas_*.csv
 
 ---
 
-## Project Structure
-
-```
-.
-├── services/
-│   ├── query/          # Retrieval + generation service (port 8001)
-│   ├── ingestion/      # Document ingestion API (port 8002)
-│   └── worker/         # Async chunk/embed/index worker
-├── shared/             # Shared Pydantic models and events (rag-shared package)
-├── infrastructure/
-│   ├── docker/         # docker-compose + Traefik + Prometheus config
-│   └── scripts/        # init_topics.sh, init_qdrant.sh
-├── evals/              # RAGAS evaluation framework + latency benchmarks
-└── docs/
-    └── high_level_design/  # Architecture diagrams + full design document
-```
-
----
-
 ## Full Design Document
 
-See [`docs/high_level_design/high_leve_design_doc.md`](docs/high_level_design/high_leve_design_doc.md) for the complete system design including:
+See [`docs/high_level_design/high_leve_design_doc.md`](docs/high_level_design/high_level_design_doc.md) for the complete system design including:
 
 - All technology decisions with rationale
 - Data flow sequence diagrams
