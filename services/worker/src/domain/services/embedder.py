@@ -41,7 +41,7 @@ class OllamaEmbedder:
     @property
     def dimensions(self) -> int:
         return 768
-    
+
     @property
     def model_name(self) -> str:
         return self._model

@@ -38,7 +38,7 @@ async def lifespan(app: FastAPI):
         port=settings.qdrant_port,
         collection=settings.qdrant_collection,
     )
-    
+
     llm = OllamaProvider(
         base_url=settings.ollama_base_url,
         model=settings.llm_model,
@@ -50,29 +50,29 @@ async def lifespan(app: FastAPI):
         vector_store=vector_store,
         reranker=FlashRankReranker() if settings.reranker_enabled else None,
     )
-    
+
     exact_cache = ExactCache(redis_url=settings.redis_url)
     semantic_cache = SemanticCache(
         qdrant_host=settings.qdrant_host,
         qdrant_port=settings.qdrant_port,
     )
     await semantic_cache.ensure_collection(dense_size=embedder.dimensions)
-    
+
     raw_svc = QueryService(
         retriever=retriever,
         llm=llm,
         prompt_builder=PromptBuilder(),
     )
-    
+
     cached_svc = CachedQueryService(
         query_service=raw_svc,
         exact_cache=exact_cache,
         semantic_cache=semantic_cache,
-        embedder=embedder
+        embedder=embedder,
     )
-    
+
     query.set_query_service(cached_svc)
-    
+
     structlog.configure(
         processors=[
             structlog.contextvars.merge_contextvars,

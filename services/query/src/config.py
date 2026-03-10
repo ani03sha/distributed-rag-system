@@ -22,13 +22,13 @@ class Settings(BaseSettings):
     embedding_model: str = "nomic-embed-text"
     retrieval_top_k: int = 5
     reranker_enabled: bool = False
-    
-    api_keys: str = "dev-key-1,dev-key-2" # Comma separated, replace with DB in prod
+
+    api_keys: str = "dev-key-1,dev-key-2"  # Comma separated, replace with DB in prod
     jwt_secret_key: str = "change-me-inp-production"
     jwt_algorithm: str = "HS256"
     jwt_expiry_minutes: int = 15
     jwt_refresh_expiry_days: int = 7
-    
+
     otlp_endpoint: str = "http://localhost:4317"
     tracing_enabled: bool = True
 

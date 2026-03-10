@@ -9,7 +9,6 @@ log = structlog.get_logger()
 
 
 class LoggingMiddleware(BaseHTTPMiddleware):
-
     async def dispatch(self, request: Request, call_next):
         request_id = str(uuid.uuid4())[:8]
         start = time.perf_counter()

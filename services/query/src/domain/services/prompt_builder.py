@@ -23,12 +23,7 @@ class PromptBuilder:
 
         context_text = "\n\n---\n\n".join(context_blocks)
 
-        return (
-            f"Context documents:\n\n"
-            f"{context_text}\n\n"
-            f"---\n\n"
-            f"Question: {query}"
-        )
+        return f"Context documents:\n\n{context_text}\n\n---\n\nQuestion: {query}"
 
     @property
     def system_prompt(self) -> str:

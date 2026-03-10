@@ -25,13 +25,17 @@ class SemanticCache:
     """
 
     def __init__(self, qdrant_host: str, qdrant_port: int) -> None:
-        self._client = AsyncQdrantClient(host=qdrant_host, port=qdrant_port, check_compatibility=False)
+        self._client = AsyncQdrantClient(
+            host=qdrant_host, port=qdrant_port, check_compatibility=False
+        )
 
     async def ensure_collection(self, dense_size: int = 768) -> None:
         if not await self._client.collection_exists(COLLECTION):
             await self._client.create_collection(
                 collection_name=COLLECTION,
-                vectors_config={"dense": VectorParams(size=dense_size, distance=Distance.COSINE)},
+                vectors_config={
+                    "dense": VectorParams(size=dense_size, distance=Distance.COSINE)
+                },
             )
 
     async def get(self, query_vector: list[float]) -> dict | None:

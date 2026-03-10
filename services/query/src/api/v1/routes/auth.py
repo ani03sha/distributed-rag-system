@@ -21,14 +21,20 @@ class TokenResponse(BaseModel):
     access_token: str
     refresh_token: str
     token_type: str = "bearer"
-    expires_in: int        # access token TTL in seconds
+    expires_in: int  # access token TTL in seconds
     refresh_expires_in: int  # refresh token TTL in seconds
 
 
 def _make_access_token(sub: str) -> str:
     expiry = datetime.now(UTC) + timedelta(minutes=settings.jwt_expiry_minutes)
     return jwt.encode(
-        {"sub": sub, "type": "access", "scopes": ["query"], "exp": expiry, "iss": "rag-system"},
+        {
+            "sub": sub,
+            "type": "access",
+            "scopes": ["query"],
+            "exp": expiry,
+            "iss": "rag-system",
+        },
         settings.jwt_secret_key,
         algorithm=settings.jwt_algorithm,
     )

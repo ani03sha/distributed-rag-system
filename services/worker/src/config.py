@@ -19,4 +19,5 @@ class Settings(BaseSettings):
     chunk_overlap: int = 64
     dense_vector_size: int = 768  # nomic-embed-text output dimension
 
+
 settings = Settings()

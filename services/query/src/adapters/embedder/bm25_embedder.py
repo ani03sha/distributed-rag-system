@@ -2,7 +2,6 @@ from fastembed import SparseTextEmbedding
 
 
 class BM25Embedder:
-
     def __init__(self) -> None:
         self._model = SparseTextEmbedding(model_name="Qdrant/bm25")
 

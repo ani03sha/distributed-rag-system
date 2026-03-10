@@ -22,8 +22,12 @@ class QdrantAdapter:
         if not exists:
             await self.__client.create_collection(
                 collection_name=self._collection,
-                vectors_config={"dense": VectorParams(size=dense_size, distance=Distance.COSINE)},
-                sparse_vectors_config={"sparse": SparseVectorParams(index=SparseIndexParams())},
+                vectors_config={
+                    "dense": VectorParams(size=dense_size, distance=Distance.COSINE)
+                },
+                sparse_vectors_config={
+                    "sparse": SparseVectorParams(index=SparseIndexParams())
+                },
             )
 
     async def upsert(self, chunks: list[DocumentChunk]) -> None:

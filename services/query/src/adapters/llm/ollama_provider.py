@@ -14,15 +14,16 @@ class OllamaProvider:
     Each line: {"message": {"content": "<token>"}, "done": false}
     Final line: {"done": true}
     """
-    
+
     def __init__(self, base_url: str, model: str) -> None:
         self._base_url = base_url
         self._model = model
         # Long timeout - generation can take 30+ seconds for large context
         self._client = httpx.AsyncClient(timeout=300.0)
 
-
-    async def generate(self, system_prompt: str, user_prompt: str, stream: bool = True) -> AsyncIterator[str]:
+    async def generate(
+        self, system_prompt: str, user_prompt: str, stream: bool = True
+    ) -> AsyncIterator[str]:
         payload = {
             "model": self._model,
             "messages": [
@@ -31,13 +32,12 @@ class OllamaProvider:
             ],
             "stream": stream,
             "options": {
-                "temperature": 0.0, # Deterministic - critical for factual RAG
+                "temperature": 0.0,  # Deterministic - critical for factual RAG
             },
         }
-        
+
         async with self._client.stream(
-            "POST",
-            f"{self._base_url}/api/chat", json=payload
+            "POST", f"{self._base_url}/api/chat", json=payload
         ) as response:
             response.raise_for_status()
             async for line in response.aiter_lines():
@@ -49,6 +49,6 @@ class OllamaProvider:
                     yield token
                 if data.get("done"):
                     break
-    
+
     async def close(self) -> None:
         await self._client.aclose()

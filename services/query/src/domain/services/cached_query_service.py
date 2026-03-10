@@ -60,7 +60,12 @@ class CachedQueryService:
         return {
             "answer": answer.answer,
             "sources": [
-                {"title": s.title, "source_url": s.source_url, "score": float(s.score), "chunk_text": s.chunk_text}
+                {
+                    "title": s.title,
+                    "source_url": s.source_url,
+                    "score": float(s.score),
+                    "chunk_text": s.chunk_text,
+                }
                 for s in answer.sources
             ],
         }
@@ -69,7 +74,12 @@ class CachedQueryService:
         return GeneratedAnswer(
             answer=data["answer"],
             sources=[
-                SourceCitation(title=s["title"], source_url=s["source_url"], score=s["score"], chunk_text=s.get("chunk_text", ""))
+                SourceCitation(
+                    title=s["title"],
+                    source_url=s["source_url"],
+                    score=s["score"],
+                    chunk_text=s.get("chunk_text", ""),
+                )
                 for s in data.get("sources", [])
             ],
             cached=cached,

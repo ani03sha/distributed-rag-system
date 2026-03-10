@@ -54,7 +54,12 @@ async def query(request: QueryRequest, _: dict = Depends(require_auth)):
     return QueryResponse(
         answer=result.answer,
         sources=[
-            ChunkContext(title=s.title, source_url=s.source_url, score=s.score, chunk_text=s.chunk_text)
+            ChunkContext(
+                title=s.title,
+                source_url=s.source_url,
+                score=s.score,
+                chunk_text=s.chunk_text,
+            )
             for s in result.sources
         ],
         cached=result.cached,
@@ -72,7 +77,7 @@ async def _stream_sse(query: str, top_k: int):
         if result.cached:
             # Stream cached answer token by token (still feels responsive)
             for word in result.answer.split(" "):
-                yield f'data: {json.dumps({"token": word + " "})}\n\n'
+                yield f"data: {json.dumps({'token': word + ' '})}\n\n"
             yield "data: [DONE]\n\n"
             return
 
