@@ -1,0 +1,627 @@
+{
+  "/Users/anirudh/Anirudh/Code/DistributedSystemProjects/distributed-rag-system/.vscode/settings.json": {
+    "mtime": 1777042178.7507582,
+    "ast_hash": "4b33156371b4a6e0fb1384b1f744ba2d",
+    "semantic_hash": "4b33156371b4a6e0fb1384b1f744ba2d"
+  },
+  "/Users/anirudh/Anirudh/Code/DistributedSystemProjects/distributed-rag-system/conftest.py": {
+    "mtime": 1777042178.7510567,
+    "ast_hash": "6e64815f9e796b1ec66eb11d84f31e97",
+    "semantic_hash": "6e64815f9e796b1ec66eb11d84f31e97"
+  },
+  "/Users/anirudh/Anirudh/Code/DistributedSystemProjects/distributed-rag-system/evals/datasets/answers_cache.json": {
+    "mtime": 1777042178.760691,
+    "ast_hash": "a05da01225f0d58ef2a033086792adc8",
+    "semantic_hash": "a05da01225f0d58ef2a033086792adc8"
+  },
+  "/Users/anirudh/Anirudh/Code/DistributedSystemProjects/distributed-rag-system/evals/datasets/candidates.json": {
+    "mtime": 1777042178.760806,
+    "ast_hash": "ec7951953cf97cbaf0ede4ad909a5180",
+    "semantic_hash": "ec7951953cf97cbaf0ede4ad909a5180"
+  },
+  "/Users/anirudh/Anirudh/Code/DistributedSystemProjects/distributed-rag-system/evals/datasets/generate_golden_set.py": {
+    "mtime": 1777042178.7608907,
+    "ast_hash": "f6d4d0806f13f7285d4ab3965d3c4d2f",
+    "semantic_hash": "f6d4d0806f13f7285d4ab3965d3c4d2f"
+  },
+  "/Users/anirudh/Anirudh/Code/DistributedSystemProjects/distributed-rag-system/evals/runners/__init__.py": {
+    "mtime": 1777042178.761293,
+    "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
+    "semantic_hash": "d41d8cd98f00b204e9800998ecf8427e"
+  },
+  "/Users/anirudh/Anirudh/Code/DistributedSystemProjects/distributed-rag-system/evals/runners/auth_client.py": {
+    "mtime": 1777042178.7613754,
+    "ast_hash": "8714004c176ea0876d7a0635dd9358b1",
+    "semantic_hash": "8714004c176ea0876d7a0635dd9358b1"
+  },
+  "/Users/anirudh/Anirudh/Code/DistributedSystemProjects/distributed-rag-system/evals/runners/compare_reports.py": {
+    "mtime": 1777042178.761443,
+    "ast_hash": "65a2e0ae4e4200c19725aa88c422135e",
+    "semantic_hash": "65a2e0ae4e4200c19725aa88c422135e"
+  },
+  "/Users/anirudh/Anirudh/Code/DistributedSystemProjects/distributed-rag-system/evals/runners/latency_bench.py": {
+    "mtime": 1777042178.7615106,
+    "ast_hash": "3778b0cf1f63f8e85e4d6852a6d132a0",
+    "semantic_hash": "3778b0cf1f63f8e85e4d6852a6d132a0"
+  },
+  "/Users/anirudh/Anirudh/Code/DistributedSystemProjects/distributed-rag-system/evals/runners/ragas_eval.py": {
+    "mtime": 1777042178.7616944,
+    "ast_hash": "689acb27e355a287ed7b3f57fe7fc31c",
+    "semantic_hash": "689acb27e355a287ed7b3f57fe7fc31c"
+  },
+  "/Users/anirudh/Anirudh/Code/DistributedSystemProjects/distributed-rag-system/infrastructure/scripts/init_qdrant.sh": {
+    "mtime": 1777042178.7622435,
+    "ast_hash": "21f8b53be10d5881ec812029d7869068",
+    "semantic_hash": "21f8b53be10d5881ec812029d7869068"
+  },
+  "/Users/anirudh/Anirudh/Code/DistributedSystemProjects/distributed-rag-system/infrastructure/scripts/init_topics.sh": {
+    "mtime": 1777042178.7623086,
+    "ast_hash": "0bf48b00a3c9b479619c6a9d57d21b81",
+    "semantic_hash": "0bf48b00a3c9b479619c6a9d57d21b81"
+  },
+  "/Users/anirudh/Anirudh/Code/DistributedSystemProjects/distributed-rag-system/main.py": {
+    "mtime": 1777042178.762375,
+    "ast_hash": "f24ae7343049a0d9b568b6bce470168a",
+    "semantic_hash": "f24ae7343049a0d9b568b6bce470168a"
+  },
+  "/Users/anirudh/Anirudh/Code/DistributedSystemProjects/distributed-rag-system/services/admin/src/__init__.py": {
+    "mtime": 1777042178.7626457,
+    "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
+    "semantic_hash": "d41d8cd98f00b204e9800998ecf8427e"
+  },
+  "/Users/anirudh/Anirudh/Code/DistributedSystemProjects/distributed-rag-system/services/admin/src/api/__init__.py": {
+    "mtime": 1777042178.7627277,
+    "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
+    "semantic_hash": "d41d8cd98f00b204e9800998ecf8427e"
+  },
+  "/Users/anirudh/Anirudh/Code/DistributedSystemProjects/distributed-rag-system/services/admin/src/api/v1/__init__.py": {
+    "mtime": 1777042178.7628183,
+    "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
+    "semantic_hash": "d41d8cd98f00b204e9800998ecf8427e"
+  },
+  "/Users/anirudh/Anirudh/Code/DistributedSystemProjects/distributed-rag-system/services/admin/src/api/v1/routes/__init__.py": {
+    "mtime": 1777042178.7628996,
+    "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
+    "semantic_hash": "d41d8cd98f00b204e9800998ecf8427e"
+  },
+  "/Users/anirudh/Anirudh/Code/DistributedSystemProjects/distributed-rag-system/services/admin/src/api/v1/routes/health.py": {
+    "mtime": 1777042178.7629766,
+    "ast_hash": "4715d58b3e2fc8a69f14c6d6387fb48e",
+    "semantic_hash": "4715d58b3e2fc8a69f14c6d6387fb48e"
+  },
+  "/Users/anirudh/Anirudh/Code/DistributedSystemProjects/distributed-rag-system/services/admin/src/config.py": {
+    "mtime": 1777042178.7630548,
+    "ast_hash": "a1e0ba1204b421825551a4c4d87630a6",
+    "semantic_hash": "a1e0ba1204b421825551a4c4d87630a6"
+  },
+  "/Users/anirudh/Anirudh/Code/DistributedSystemProjects/distributed-rag-system/services/admin/src/domain/__init__.py": {
+    "mtime": 1777042178.7631192,
+    "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
+    "semantic_hash": "d41d8cd98f00b204e9800998ecf8427e"
+  },
+  "/Users/anirudh/Anirudh/Code/DistributedSystemProjects/distributed-rag-system/services/admin/src/main.py": {
+    "mtime": 1777042178.7632117,
+    "ast_hash": "01b687dd645d7a694868394ae1ec653a",
+    "semantic_hash": "01b687dd645d7a694868394ae1ec653a"
+  },
+  "/Users/anirudh/Anirudh/Code/DistributedSystemProjects/distributed-rag-system/services/ingestion/src/__init__.py": {
+    "mtime": 1777042178.7634604,
+    "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
+    "semantic_hash": "d41d8cd98f00b204e9800998ecf8427e"
+  },
+  "/Users/anirudh/Anirudh/Code/DistributedSystemProjects/distributed-rag-system/services/ingestion/src/adapters/__init__.py": {
+    "mtime": 1777042178.7635322,
+    "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
+    "semantic_hash": "d41d8cd98f00b204e9800998ecf8427e"
+  },
+  "/Users/anirudh/Anirudh/Code/DistributedSystemProjects/distributed-rag-system/services/ingestion/src/adapters/publisher/__init__.py": {
+    "mtime": 1777042178.763606,
+    "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
+    "semantic_hash": "d41d8cd98f00b204e9800998ecf8427e"
+  },
+  "/Users/anirudh/Anirudh/Code/DistributedSystemProjects/distributed-rag-system/services/ingestion/src/adapters/publisher/redpanda.py": {
+    "mtime": 1777042178.7636743,
+    "ast_hash": "a5da13709c3f1096ef4c2d12d6406dc2",
+    "semantic_hash": "a5da13709c3f1096ef4c2d12d6406dc2"
+  },
+  "/Users/anirudh/Anirudh/Code/DistributedSystemProjects/distributed-rag-system/services/ingestion/src/adapters/sources/__init__.py": {
+    "mtime": 1777042178.7637324,
+    "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
+    "semantic_hash": "d41d8cd98f00b204e9800998ecf8427e"
+  },
+  "/Users/anirudh/Anirudh/Code/DistributedSystemProjects/distributed-rag-system/services/ingestion/src/adapters/sources/wikipedia.py": {
+    "mtime": 1777042178.7638042,
+    "ast_hash": "0f1653dfce19667a67a94cf24cf34b7f",
+    "semantic_hash": "0f1653dfce19667a67a94cf24cf34b7f"
+  },
+  "/Users/anirudh/Anirudh/Code/DistributedSystemProjects/distributed-rag-system/services/ingestion/src/api/__init__.py": {
+    "mtime": 1777042178.763868,
+    "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
+    "semantic_hash": "d41d8cd98f00b204e9800998ecf8427e"
+  },
+  "/Users/anirudh/Anirudh/Code/DistributedSystemProjects/distributed-rag-system/services/ingestion/src/api/v1/__init__.py": {
+    "mtime": 1777042178.7639475,
+    "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
+    "semantic_hash": "d41d8cd98f00b204e9800998ecf8427e"
+  },
+  "/Users/anirudh/Anirudh/Code/DistributedSystemProjects/distributed-rag-system/services/ingestion/src/api/v1/routes/__init__.py": {
+    "mtime": 1777042178.7640395,
+    "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
+    "semantic_hash": "d41d8cd98f00b204e9800998ecf8427e"
+  },
+  "/Users/anirudh/Anirudh/Code/DistributedSystemProjects/distributed-rag-system/services/ingestion/src/api/v1/routes/health.py": {
+    "mtime": 1777042178.7641184,
+    "ast_hash": "52ff60d5442ccaef27a308b2f26d4e92",
+    "semantic_hash": "52ff60d5442ccaef27a308b2f26d4e92"
+  },
+  "/Users/anirudh/Anirudh/Code/DistributedSystemProjects/distributed-rag-system/services/ingestion/src/api/v1/routes/ingest.py": {
+    "mtime": 1777042178.7642145,
+    "ast_hash": "1bc094d9c3e623e0de7a06d56f357ce2",
+    "semantic_hash": "1bc094d9c3e623e0de7a06d56f357ce2"
+  },
+  "/Users/anirudh/Anirudh/Code/DistributedSystemProjects/distributed-rag-system/services/ingestion/src/config.py": {
+    "mtime": 1777042178.7642963,
+    "ast_hash": "6416a7837b5fffa1833b329dceffc792",
+    "semantic_hash": "6416a7837b5fffa1833b329dceffc792"
+  },
+  "/Users/anirudh/Anirudh/Code/DistributedSystemProjects/distributed-rag-system/services/ingestion/src/domain/__init__.py": {
+    "mtime": 1777042178.7643983,
+    "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
+    "semantic_hash": "d41d8cd98f00b204e9800998ecf8427e"
+  },
+  "/Users/anirudh/Anirudh/Code/DistributedSystemProjects/distributed-rag-system/services/ingestion/src/domain/models/__init__.py": {
+    "mtime": 1777042178.7644882,
+    "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
+    "semantic_hash": "d41d8cd98f00b204e9800998ecf8427e"
+  },
+  "/Users/anirudh/Anirudh/Code/DistributedSystemProjects/distributed-rag-system/services/ingestion/src/domain/models/document.py": {
+    "mtime": 1777042178.7645965,
+    "ast_hash": "134533de5beff7c91624807209d213c5",
+    "semantic_hash": "134533de5beff7c91624807209d213c5"
+  },
+  "/Users/anirudh/Anirudh/Code/DistributedSystemProjects/distributed-rag-system/services/ingestion/src/domain/ports/__init__.py": {
+    "mtime": 1777042178.764678,
+    "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
+    "semantic_hash": "d41d8cd98f00b204e9800998ecf8427e"
+  },
+  "/Users/anirudh/Anirudh/Code/DistributedSystemProjects/distributed-rag-system/services/ingestion/src/domain/ports/document_source.py": {
+    "mtime": 1777042178.7647934,
+    "ast_hash": "9aef5f05ceda62ff92fbc678c2eca0fa",
+    "semantic_hash": "9aef5f05ceda62ff92fbc678c2eca0fa"
+  },
+  "/Users/anirudh/Anirudh/Code/DistributedSystemProjects/distributed-rag-system/services/ingestion/src/domain/ports/event_publisher.py": {
+    "mtime": 1777042178.7648537,
+    "ast_hash": "52b68a959c3c387cbca65e580629dcf0",
+    "semantic_hash": "52b68a959c3c387cbca65e580629dcf0"
+  },
+  "/Users/anirudh/Anirudh/Code/DistributedSystemProjects/distributed-rag-system/services/ingestion/src/domain/services/__init__.py": {
+    "mtime": 1777042178.7649167,
+    "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
+    "semantic_hash": "d41d8cd98f00b204e9800998ecf8427e"
+  },
+  "/Users/anirudh/Anirudh/Code/DistributedSystemProjects/distributed-rag-system/services/ingestion/src/domain/services/ingestion_service.py": {
+    "mtime": 1777042178.7649996,
+    "ast_hash": "a172e1e42ee94852e409c527138b16e4",
+    "semantic_hash": "a172e1e42ee94852e409c527138b16e4"
+  },
+  "/Users/anirudh/Anirudh/Code/DistributedSystemProjects/distributed-rag-system/services/ingestion/src/main.py": {
+    "mtime": 1777042178.7650661,
+    "ast_hash": "22f9f6e75eb597a0ef865c9af9d8bad8",
+    "semantic_hash": "22f9f6e75eb597a0ef865c9af9d8bad8"
+  },
+  "/Users/anirudh/Anirudh/Code/DistributedSystemProjects/distributed-rag-system/services/ingestion/src/migrations/__init__.py": {
+    "mtime": 1777042178.765196,
+    "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
+    "semantic_hash": "d41d8cd98f00b204e9800998ecf8427e"
+  },
+  "/Users/anirudh/Anirudh/Code/DistributedSystemProjects/distributed-rag-system/services/ingestion/src/migrations/env.py": {
+    "mtime": 1777042178.7652736,
+    "ast_hash": "0cf65dff7e2a9fae068c5f052608b6d8",
+    "semantic_hash": "0cf65dff7e2a9fae068c5f052608b6d8"
+  },
+  "/Users/anirudh/Anirudh/Code/DistributedSystemProjects/distributed-rag-system/services/ingestion/src/migrations/versions/4252d99b5247_create_documents_and_ingestion_jobs.py": {
+    "mtime": 1777042178.7654498,
+    "ast_hash": "3b0b415bd1c749e92039ab8777539a22",
+    "semantic_hash": "3b0b415bd1c749e92039ab8777539a22"
+  },
+  "/Users/anirudh/Anirudh/Code/DistributedSystemProjects/distributed-rag-system/services/ingestion/src/migrations/versions/__init__.py": {
+    "mtime": 1777042178.7654774,
+    "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
+    "semantic_hash": "d41d8cd98f00b204e9800998ecf8427e"
+  },
+  "/Users/anirudh/Anirudh/Code/DistributedSystemProjects/distributed-rag-system/services/query/conftest.py": {
+    "mtime": 1777042178.7655897,
+    "ast_hash": "e0cbcb6a3530586b73a423f15a9114dd",
+    "semantic_hash": "e0cbcb6a3530586b73a423f15a9114dd"
+  },
+  "/Users/anirudh/Anirudh/Code/DistributedSystemProjects/distributed-rag-system/services/query/src/__init__.py": {
+    "mtime": 1777042178.7657104,
+    "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
+    "semantic_hash": "d41d8cd98f00b204e9800998ecf8427e"
+  },
+  "/Users/anirudh/Anirudh/Code/DistributedSystemProjects/distributed-rag-system/services/query/src/adapters/__init__.py": {
+    "mtime": 1777042178.765792,
+    "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
+    "semantic_hash": "d41d8cd98f00b204e9800998ecf8427e"
+  },
+  "/Users/anirudh/Anirudh/Code/DistributedSystemProjects/distributed-rag-system/services/query/src/adapters/cache/__init__.py": {
+    "mtime": 1777042178.76587,
+    "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
+    "semantic_hash": "d41d8cd98f00b204e9800998ecf8427e"
+  },
+  "/Users/anirudh/Anirudh/Code/DistributedSystemProjects/distributed-rag-system/services/query/src/adapters/cache/exact_cache.py": {
+    "mtime": 1777042178.7659516,
+    "ast_hash": "feea9788a78675d06982b554d7ef083d",
+    "semantic_hash": "feea9788a78675d06982b554d7ef083d"
+  },
+  "/Users/anirudh/Anirudh/Code/DistributedSystemProjects/distributed-rag-system/services/query/src/adapters/cache/semantic_cache.py": {
+    "mtime": 1777042178.7660353,
+    "ast_hash": "deda367bc334688e070aa8333ce57020",
+    "semantic_hash": "deda367bc334688e070aa8333ce57020"
+  },
+  "/Users/anirudh/Anirudh/Code/DistributedSystemProjects/distributed-rag-system/services/query/src/adapters/embedder/__init__.py": {
+    "mtime": 1777042178.7661014,
+    "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
+    "semantic_hash": "d41d8cd98f00b204e9800998ecf8427e"
+  },
+  "/Users/anirudh/Anirudh/Code/DistributedSystemProjects/distributed-rag-system/services/query/src/adapters/embedder/bm25_embedder.py": {
+    "mtime": 1777042178.7661815,
+    "ast_hash": "3d4e34d7ce38b40c4f0261a3273c4e08",
+    "semantic_hash": "3d4e34d7ce38b40c4f0261a3273c4e08"
+  },
+  "/Users/anirudh/Anirudh/Code/DistributedSystemProjects/distributed-rag-system/services/query/src/adapters/embedder/ollama_embedder.py": {
+    "mtime": 1777042178.7662456,
+    "ast_hash": "b45fdf5ef37c3dc5730e25e870371006",
+    "semantic_hash": "b45fdf5ef37c3dc5730e25e870371006"
+  },
+  "/Users/anirudh/Anirudh/Code/DistributedSystemProjects/distributed-rag-system/services/query/src/adapters/llm/__init__.py": {
+    "mtime": 1777042178.7663147,
+    "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
+    "semantic_hash": "d41d8cd98f00b204e9800998ecf8427e"
+  },
+  "/Users/anirudh/Anirudh/Code/DistributedSystemProjects/distributed-rag-system/services/query/src/adapters/llm/ollama_provider.py": {
+    "mtime": 1777042178.766398,
+    "ast_hash": "2a5b7d7bd0e6c491e8e674418dcc9a28",
+    "semantic_hash": "2a5b7d7bd0e6c491e8e674418dcc9a28"
+  },
+  "/Users/anirudh/Anirudh/Code/DistributedSystemProjects/distributed-rag-system/services/query/src/adapters/reranker/__init__.py": {
+    "mtime": 1777042178.7664607,
+    "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
+    "semantic_hash": "d41d8cd98f00b204e9800998ecf8427e"
+  },
+  "/Users/anirudh/Anirudh/Code/DistributedSystemProjects/distributed-rag-system/services/query/src/adapters/reranker/flashrank_reranker.py": {
+    "mtime": 1777042178.7665486,
+    "ast_hash": "1ef838963ae4a56f476b83275c89c78e",
+    "semantic_hash": "1ef838963ae4a56f476b83275c89c78e"
+  },
+  "/Users/anirudh/Anirudh/Code/DistributedSystemProjects/distributed-rag-system/services/query/src/adapters/vector_store/__init__.py": {
+    "mtime": 1777042178.7666183,
+    "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
+    "semantic_hash": "d41d8cd98f00b204e9800998ecf8427e"
+  },
+  "/Users/anirudh/Anirudh/Code/DistributedSystemProjects/distributed-rag-system/services/query/src/adapters/vector_store/qdrant_adapter.py": {
+    "mtime": 1777042178.7667007,
+    "ast_hash": "ae0f4aec390d4ca97786e0f7f015704c",
+    "semantic_hash": "ae0f4aec390d4ca97786e0f7f015704c"
+  },
+  "/Users/anirudh/Anirudh/Code/DistributedSystemProjects/distributed-rag-system/services/query/src/api/__init__.py": {
+    "mtime": 1777042178.76677,
+    "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
+    "semantic_hash": "d41d8cd98f00b204e9800998ecf8427e"
+  },
+  "/Users/anirudh/Anirudh/Code/DistributedSystemProjects/distributed-rag-system/services/query/src/api/dependencies.py": {
+    "mtime": 1777042178.76685,
+    "ast_hash": "503b500854b695c339f9e9220058c0c8",
+    "semantic_hash": "503b500854b695c339f9e9220058c0c8"
+  },
+  "/Users/anirudh/Anirudh/Code/DistributedSystemProjects/distributed-rag-system/services/query/src/api/middleware.py": {
+    "mtime": 1777042178.76691,
+    "ast_hash": "2c3d9469f108899216dcc9ded4ca39fc",
+    "semantic_hash": "2c3d9469f108899216dcc9ded4ca39fc"
+  },
+  "/Users/anirudh/Anirudh/Code/DistributedSystemProjects/distributed-rag-system/services/query/src/api/v1/__init__.py": {
+    "mtime": 1777042178.7669735,
+    "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
+    "semantic_hash": "d41d8cd98f00b204e9800998ecf8427e"
+  },
+  "/Users/anirudh/Anirudh/Code/DistributedSystemProjects/distributed-rag-system/services/query/src/api/v1/routes/__init__.py": {
+    "mtime": 1777042178.7670527,
+    "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
+    "semantic_hash": "d41d8cd98f00b204e9800998ecf8427e"
+  },
+  "/Users/anirudh/Anirudh/Code/DistributedSystemProjects/distributed-rag-system/services/query/src/api/v1/routes/auth.py": {
+    "mtime": 1777042178.7671325,
+    "ast_hash": "c672cead0bc57a97064f3620ee355af6",
+    "semantic_hash": "c672cead0bc57a97064f3620ee355af6"
+  },
+  "/Users/anirudh/Anirudh/Code/DistributedSystemProjects/distributed-rag-system/services/query/src/api/v1/routes/health.py": {
+    "mtime": 1777042178.767197,
+    "ast_hash": "b5178880ef449f2276886fab4b5a8e3b",
+    "semantic_hash": "b5178880ef449f2276886fab4b5a8e3b"
+  },
+  "/Users/anirudh/Anirudh/Code/DistributedSystemProjects/distributed-rag-system/services/query/src/api/v1/routes/query.py": {
+    "mtime": 1777042178.76728,
+    "ast_hash": "2e38fa7ee5a469bcee49724cabe3c80d",
+    "semantic_hash": "2e38fa7ee5a469bcee49724cabe3c80d"
+  },
+  "/Users/anirudh/Anirudh/Code/DistributedSystemProjects/distributed-rag-system/services/query/src/config.py": {
+    "mtime": 1777042178.7673404,
+    "ast_hash": "283899894486c14f6ac34ca24bab9513",
+    "semantic_hash": "283899894486c14f6ac34ca24bab9513"
+  },
+  "/Users/anirudh/Anirudh/Code/DistributedSystemProjects/distributed-rag-system/services/query/src/domain/__init__.py": {
+    "mtime": 1777042178.7674162,
+    "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
+    "semantic_hash": "d41d8cd98f00b204e9800998ecf8427e"
+  },
+  "/Users/anirudh/Anirudh/Code/DistributedSystemProjects/distributed-rag-system/services/query/src/domain/models/__init__.py": {
+    "mtime": 1777042178.7674959,
+    "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
+    "semantic_hash": "d41d8cd98f00b204e9800998ecf8427e"
+  },
+  "/Users/anirudh/Anirudh/Code/DistributedSystemProjects/distributed-rag-system/services/query/src/domain/models/generation.py": {
+    "mtime": 1777042178.7675705,
+    "ast_hash": "a02b2b192a9d4ce64e80d7ae2b06b8f7",
+    "semantic_hash": "a02b2b192a9d4ce64e80d7ae2b06b8f7"
+  },
+  "/Users/anirudh/Anirudh/Code/DistributedSystemProjects/distributed-rag-system/services/query/src/domain/models/query.py": {
+    "mtime": 1777042178.7676225,
+    "ast_hash": "3d38e453a0822a164c02233d3fe379a3",
+    "semantic_hash": "3d38e453a0822a164c02233d3fe379a3"
+  },
+  "/Users/anirudh/Anirudh/Code/DistributedSystemProjects/distributed-rag-system/services/query/src/domain/ports/__init__.py": {
+    "mtime": 1777042178.767675,
+    "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
+    "semantic_hash": "d41d8cd98f00b204e9800998ecf8427e"
+  },
+  "/Users/anirudh/Anirudh/Code/DistributedSystemProjects/distributed-rag-system/services/query/src/domain/ports/embedding_provider.py": {
+    "mtime": 1777042178.76774,
+    "ast_hash": "1bb650e03371633f236834c26e70411a",
+    "semantic_hash": "1bb650e03371633f236834c26e70411a"
+  },
+  "/Users/anirudh/Anirudh/Code/DistributedSystemProjects/distributed-rag-system/services/query/src/domain/ports/llm_provider.py": {
+    "mtime": 1777042178.7677925,
+    "ast_hash": "0e74abc9c7d44c1768286571ab2afc90",
+    "semantic_hash": "0e74abc9c7d44c1768286571ab2afc90"
+  },
+  "/Users/anirudh/Anirudh/Code/DistributedSystemProjects/distributed-rag-system/services/query/src/domain/ports/reranker.py": {
+    "mtime": 1777042178.7678442,
+    "ast_hash": "b290468f143b71baee859fd5ec09cb49",
+    "semantic_hash": "b290468f143b71baee859fd5ec09cb49"
+  },
+  "/Users/anirudh/Anirudh/Code/DistributedSystemProjects/distributed-rag-system/services/query/src/domain/ports/sparse_embedding_provider.py": {
+    "mtime": 1777042178.767908,
+    "ast_hash": "f088e2de6f6ccef2155b6fbcd28224b8",
+    "semantic_hash": "f088e2de6f6ccef2155b6fbcd28224b8"
+  },
+  "/Users/anirudh/Anirudh/Code/DistributedSystemProjects/distributed-rag-system/services/query/src/domain/ports/vector_store.py": {
+    "mtime": 1777042178.7679656,
+    "ast_hash": "206b6325a90a3e6e9507b1ccfda6c5e5",
+    "semantic_hash": "206b6325a90a3e6e9507b1ccfda6c5e5"
+  },
+  "/Users/anirudh/Anirudh/Code/DistributedSystemProjects/distributed-rag-system/services/query/src/domain/services/__init__.py": {
+    "mtime": 1777042178.768022,
+    "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
+    "semantic_hash": "d41d8cd98f00b204e9800998ecf8427e"
+  },
+  "/Users/anirudh/Anirudh/Code/DistributedSystemProjects/distributed-rag-system/services/query/src/domain/services/cached_query_service.py": {
+    "mtime": 1777042178.7680979,
+    "ast_hash": "d033686f1d9ac5f374e718a5f018358c",
+    "semantic_hash": "d033686f1d9ac5f374e718a5f018358c"
+  },
+  "/Users/anirudh/Anirudh/Code/DistributedSystemProjects/distributed-rag-system/services/query/src/domain/services/prompt_builder.py": {
+    "mtime": 1777042178.768158,
+    "ast_hash": "7d03224155cde4c735345a407f4140b5",
+    "semantic_hash": "7d03224155cde4c735345a407f4140b5"
+  },
+  "/Users/anirudh/Anirudh/Code/DistributedSystemProjects/distributed-rag-system/services/query/src/domain/services/query_service.py": {
+    "mtime": 1777042178.76822,
+    "ast_hash": "3e2ecf15460031b5e1e7541227b6d71b",
+    "semantic_hash": "3e2ecf15460031b5e1e7541227b6d71b"
+  },
+  "/Users/anirudh/Anirudh/Code/DistributedSystemProjects/distributed-rag-system/services/query/src/domain/services/retriever.py": {
+    "mtime": 1777042178.7682827,
+    "ast_hash": "7dcfa673fe089a776f43ad9388b7e369",
+    "semantic_hash": "7dcfa673fe089a776f43ad9388b7e369"
+  },
+  "/Users/anirudh/Anirudh/Code/DistributedSystemProjects/distributed-rag-system/services/query/src/main.py": {
+    "mtime": 1777042178.7683408,
+    "ast_hash": "d98c67ef5320611b507439f1d8b00af4",
+    "semantic_hash": "d98c67ef5320611b507439f1d8b00af4"
+  },
+  "/Users/anirudh/Anirudh/Code/DistributedSystemProjects/distributed-rag-system/services/query/src/tracing.py": {
+    "mtime": 1777042178.7683969,
+    "ast_hash": "6d8726a9dde3a0c65330525ec2062561",
+    "semantic_hash": "6d8726a9dde3a0c65330525ec2062561"
+  },
+  "/Users/anirudh/Anirudh/Code/DistributedSystemProjects/distributed-rag-system/services/query/tests/conftest.py": {
+    "mtime": 1777042178.7684913,
+    "ast_hash": "ba103402e86822ace74efc3d18c88010",
+    "semantic_hash": "ba103402e86822ace74efc3d18c88010"
+  },
+  "/Users/anirudh/Anirudh/Code/DistributedSystemProjects/distributed-rag-system/services/query/tests/test_exact_cache.py": {
+    "mtime": 1777042178.7685585,
+    "ast_hash": "1bdc6061db1a95204ce7a3c268f0a008",
+    "semantic_hash": "1bdc6061db1a95204ce7a3c268f0a008"
+  },
+  "/Users/anirudh/Anirudh/Code/DistributedSystemProjects/distributed-rag-system/services/query/tests/test_prompt_builder.py": {
+    "mtime": 1777042178.7686207,
+    "ast_hash": "00f8357671dfa53487e3735e5d1ac239",
+    "semantic_hash": "00f8357671dfa53487e3735e5d1ac239"
+  },
+  "/Users/anirudh/Anirudh/Code/DistributedSystemProjects/distributed-rag-system/services/worker/conftest.py": {
+    "mtime": 1777042178.768716,
+    "ast_hash": "e0cbcb6a3530586b73a423f15a9114dd",
+    "semantic_hash": "e0cbcb6a3530586b73a423f15a9114dd"
+  },
+  "/Users/anirudh/Anirudh/Code/DistributedSystemProjects/distributed-rag-system/services/worker/src/__init__.py": {
+    "mtime": 1777042178.7688293,
+    "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
+    "semantic_hash": "d41d8cd98f00b204e9800998ecf8427e"
+  },
+  "/Users/anirudh/Anirudh/Code/DistributedSystemProjects/distributed-rag-system/services/worker/src/adapters/__init__.py": {
+    "mtime": 1777042178.768904,
+    "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
+    "semantic_hash": "d41d8cd98f00b204e9800998ecf8427e"
+  },
+  "/Users/anirudh/Anirudh/Code/DistributedSystemProjects/distributed-rag-system/services/worker/src/adapters/qdrant_adapter.py": {
+    "mtime": 1777042178.768977,
+    "ast_hash": "7ebf40de707b5ddc7bcb758051ecbbf1",
+    "semantic_hash": "7ebf40de707b5ddc7bcb758051ecbbf1"
+  },
+  "/Users/anirudh/Anirudh/Code/DistributedSystemProjects/distributed-rag-system/services/worker/src/config.py": {
+    "mtime": 1777042178.7690337,
+    "ast_hash": "7caef235592bc147fec97f5f75916105",
+    "semantic_hash": "7caef235592bc147fec97f5f75916105"
+  },
+  "/Users/anirudh/Anirudh/Code/DistributedSystemProjects/distributed-rag-system/services/worker/src/consumers/__init__.py": {
+    "mtime": 1777042178.7690935,
+    "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
+    "semantic_hash": "d41d8cd98f00b204e9800998ecf8427e"
+  },
+  "/Users/anirudh/Anirudh/Code/DistributedSystemProjects/distributed-rag-system/services/worker/src/consumers/document_consumer.py": {
+    "mtime": 1777042178.7691772,
+    "ast_hash": "cd94de0b5c94c09d535191cb0aca8515",
+    "semantic_hash": "cd94de0b5c94c09d535191cb0aca8515"
+  },
+  "/Users/anirudh/Anirudh/Code/DistributedSystemProjects/distributed-rag-system/services/worker/src/domain/__init__.py": {
+    "mtime": 1777042178.7692425,
+    "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
+    "semantic_hash": "d41d8cd98f00b204e9800998ecf8427e"
+  },
+  "/Users/anirudh/Anirudh/Code/DistributedSystemProjects/distributed-rag-system/services/worker/src/domain/models/__init__.py": {
+    "mtime": 1777042178.7693174,
+    "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
+    "semantic_hash": "d41d8cd98f00b204e9800998ecf8427e"
+  },
+  "/Users/anirudh/Anirudh/Code/DistributedSystemProjects/distributed-rag-system/services/worker/src/domain/models/chunk.py": {
+    "mtime": 1777042178.76939,
+    "ast_hash": "adcf604d5e33f113946fb74a28e40f75",
+    "semantic_hash": "adcf604d5e33f113946fb74a28e40f75"
+  },
+  "/Users/anirudh/Anirudh/Code/DistributedSystemProjects/distributed-rag-system/services/worker/src/domain/services/__init__.py": {
+    "mtime": 1777042178.7694504,
+    "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
+    "semantic_hash": "d41d8cd98f00b204e9800998ecf8427e"
+  },
+  "/Users/anirudh/Anirudh/Code/DistributedSystemProjects/distributed-rag-system/services/worker/src/domain/services/chunker.py": {
+    "mtime": 1777042178.7695227,
+    "ast_hash": "606bcd9486b79775351c2bb5e51be17c",
+    "semantic_hash": "606bcd9486b79775351c2bb5e51be17c"
+  },
+  "/Users/anirudh/Anirudh/Code/DistributedSystemProjects/distributed-rag-system/services/worker/src/domain/services/embedder.py": {
+    "mtime": 1777042178.769588,
+    "ast_hash": "9941b329951cc924354461d13a9bcd60",
+    "semantic_hash": "9941b329951cc924354461d13a9bcd60"
+  },
+  "/Users/anirudh/Anirudh/Code/DistributedSystemProjects/distributed-rag-system/services/worker/src/domain/services/sparse_embedder.py": {
+    "mtime": 1777042178.7696412,
+    "ast_hash": "071c17fb3b7c2fc21fa363cb89e52eba",
+    "semantic_hash": "071c17fb3b7c2fc21fa363cb89e52eba"
+  },
+  "/Users/anirudh/Anirudh/Code/DistributedSystemProjects/distributed-rag-system/services/worker/src/main.py": {
+    "mtime": 1777042178.7697022,
+    "ast_hash": "7f864ea4adcda0e96f966079e6428d89",
+    "semantic_hash": "7f864ea4adcda0e96f966079e6428d89"
+  },
+  "/Users/anirudh/Anirudh/Code/DistributedSystemProjects/distributed-rag-system/services/worker/tests/conftest.py": {
+    "mtime": 1777042178.7697968,
+    "ast_hash": "b75b6be6c56ed020f0f4b9f093aca8d1",
+    "semantic_hash": "b75b6be6c56ed020f0f4b9f093aca8d1"
+  },
+  "/Users/anirudh/Anirudh/Code/DistributedSystemProjects/distributed-rag-system/services/worker/tests/test_chunker.py": {
+    "mtime": 1777042178.769859,
+    "ast_hash": "fe1f424e3d5acaf85365d8c64b6c8257",
+    "semantic_hash": "fe1f424e3d5acaf85365d8c64b6c8257"
+  },
+  "/Users/anirudh/Anirudh/Code/DistributedSystemProjects/distributed-rag-system/services/worker/tests/test_sparse_embedder.py": {
+    "mtime": 1777042178.7699218,
+    "ast_hash": "858ebeaceb0e62005401afc0be1b3bf4",
+    "semantic_hash": "858ebeaceb0e62005401afc0be1b3bf4"
+  },
+  "/Users/anirudh/Anirudh/Code/DistributedSystemProjects/distributed-rag-system/shared/src/rag_shared/__init__.py": {
+    "mtime": 1777042178.770113,
+    "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
+    "semantic_hash": "d41d8cd98f00b204e9800998ecf8427e"
+  },
+  "/Users/anirudh/Anirudh/Code/DistributedSystemProjects/distributed-rag-system/shared/src/rag_shared/auth/__init__.py": {
+    "mtime": 1777042178.7701871,
+    "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
+    "semantic_hash": "d41d8cd98f00b204e9800998ecf8427e"
+  },
+  "/Users/anirudh/Anirudh/Code/DistributedSystemProjects/distributed-rag-system/shared/src/rag_shared/logging/__init__.py": {
+    "mtime": 1777042178.7702615,
+    "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
+    "semantic_hash": "d41d8cd98f00b204e9800998ecf8427e"
+  },
+  "/Users/anirudh/Anirudh/Code/DistributedSystemProjects/distributed-rag-system/shared/src/rag_shared/models/__init__.py": {
+    "mtime": 1777042178.7703383,
+    "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
+    "semantic_hash": "d41d8cd98f00b204e9800998ecf8427e"
+  },
+  "/Users/anirudh/Anirudh/Code/DistributedSystemProjects/distributed-rag-system/shared/src/rag_shared/models/events.py": {
+    "mtime": 1777042178.7704127,
+    "ast_hash": "cbab3b78ed9e8dfaee5c84b4f718ea41",
+    "semantic_hash": "cbab3b78ed9e8dfaee5c84b4f718ea41"
+  },
+  "/Users/anirudh/Anirudh/Code/DistributedSystemProjects/distributed-rag-system/.github/workflows/ci.yml": {
+    "mtime": 1777042178.750496,
+    "ast_hash": "804effa842f2570d9d4c948d16a33cba",
+    "semantic_hash": "804effa842f2570d9d4c948d16a33cba"
+  },
+  "/Users/anirudh/Anirudh/Code/DistributedSystemProjects/distributed-rag-system/README.md": {
+    "mtime": 1777042178.7510026,
+    "ast_hash": "2266537e32cbfe5d8ae26d64c24ff374",
+    "semantic_hash": "2266537e32cbfe5d8ae26d64c24ff374"
+  },
+  "/Users/anirudh/Anirudh/Code/DistributedSystemProjects/distributed-rag-system/docs/high_level_design/high_level_design_doc.md": {
+    "mtime": 1777042178.7567008,
+    "ast_hash": "4723332ff187b37417cf15b25fdeeba2",
+    "semantic_hash": "4723332ff187b37417cf15b25fdeeba2"
+  },
+  "/Users/anirudh/Anirudh/Code/DistributedSystemProjects/distributed-rag-system/infrastructure/docker/docker-compose.infra.yml": {
+    "mtime": 1777042178.761919,
+    "ast_hash": "163b8029f753ebe55e25d8abb006f9da",
+    "semantic_hash": "163b8029f753ebe55e25d8abb006f9da"
+  },
+  "/Users/anirudh/Anirudh/Code/DistributedSystemProjects/distributed-rag-system/infrastructure/docker/prometheus.yml": {
+    "mtime": 1777042178.7619941,
+    "ast_hash": "175b01141ef9478cdef40868a2f911e8",
+    "semantic_hash": "175b01141ef9478cdef40868a2f911e8"
+  },
+  "/Users/anirudh/Anirudh/Code/DistributedSystemProjects/distributed-rag-system/infrastructure/docker/traefik-dynamic.yml": {
+    "mtime": 1777042178.7620623,
+    "ast_hash": "3ec51165845016dc97047a1e1a69f17f",
+    "semantic_hash": "3ec51165845016dc97047a1e1a69f17f"
+  },
+  "/Users/anirudh/Anirudh/Code/DistributedSystemProjects/distributed-rag-system/infrastructure/docker/traefik.yml": {
+    "mtime": 1777042178.7621217,
+    "ast_hash": "e8a36f1d10f82f4c4c38a10284c3a197",
+    "semantic_hash": "e8a36f1d10f82f4c4c38a10284c3a197"
+  },
+  "/Users/anirudh/Anirudh/Code/DistributedSystemProjects/distributed-rag-system/docs/high_level_design/distributed_rag_system_architecture.png": {
+    "mtime": 1777042178.7551918,
+    "ast_hash": "af1ade6cd598d3bb4c077d5909c9ec34",
+    "semantic_hash": "af1ade6cd598d3bb4c077d5909c9ec34"
+  },
+  "/Users/anirudh/Anirudh/Code/DistributedSystemProjects/distributed-rag-system/docs/high_level_design/hexagonal_architecture.png": {
+    "mtime": 1777042178.7565513,
+    "ast_hash": "4192e5ea1ae08e5d143f6b208f221da2",
+    "semantic_hash": "4192e5ea1ae08e5d143f6b208f221da2"
+  },
+  "/Users/anirudh/Anirudh/Code/DistributedSystemProjects/distributed-rag-system/docs/high_level_design/ingestion_flow_scheduled_refresh.png": {
+    "mtime": 1777042178.7580667,
+    "ast_hash": "7579265938ee06ddb0edb6778141d4c2",
+    "semantic_hash": "7579265938ee06ddb0edb6778141d4c2"
+  },
+  "/Users/anirudh/Anirudh/Code/DistributedSystemProjects/distributed-rag-system/docs/high_level_design/query_flow_happy_path_cache_miss.png": {
+    "mtime": 1777042178.7593074,
+    "ast_hash": "39cb27b1127d01c48ad8edce1962d2f3",
+    "semantic_hash": "39cb27b1127d01c48ad8edce1962d2f3"
+  },
+  "/Users/anirudh/Anirudh/Code/DistributedSystemProjects/distributed-rag-system/docs/high_level_design/semantic_cache_flow.png": {
+    "mtime": 1777042178.7604258,
+    "ast_hash": "808387c4cf99dcbee739879b0ea46055",
+    "semantic_hash": "808387c4cf99dcbee739879b0ea46055"
+  }
+}
